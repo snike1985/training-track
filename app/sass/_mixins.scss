@@ -1,6 +1,21 @@
 //fonts
-@mixin main-font1() {
-  font-family: "myriadpro-regular", sans-serif;
+@mixin main-font() {
+  font-family: "helveticaneue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font-bold() {
+  font-family: "helveticaneue-bold", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font-italic() {
+  font-family: "helveticaneue-italic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font-thin() {
+  font-family: "helveticaneue-thin", sans-serif;
   font-weight: 400;
   font-style: normal;
 }

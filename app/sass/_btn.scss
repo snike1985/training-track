@@ -1,38 +1,87 @@
 .btn {
-  border: none;
-  height: 50px;
-  padding: 0 10px;
-  color: $btn-color;
-  display: flex;
-  text-align: left;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  background: $btn-back;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  padding: 23px 39px 20px;
+  border: 3px solid #efefef;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #090909;
+  font-size: 12px;
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+  transition: background .3s ease-in-out;
+  @include main-font-bold();
 
   &:hover {
-    background: $btn-back-hover;
+    background-color: #efefef;
   }
 
-  &:active {
-    color: $btn-color-active;
-    background: $btn-back-active;
-  }
+  &.btn_color {
+    padding: 3px;
+    border: none;
 
-  &_2 {
-    width: 150px;
-    height: 40px;
-    background: $btn-2-back;
-
-    &:hover {
-      background: $btn-2-back-hover;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      z-index: 1;
+      background: rgb(129,190,254);
+      background: -moz-linear-gradient(left, rgba(129,190,254,1) 50%, rgba(255,128,128,1) 100%);
+      background: -webkit-linear-gradient(left, rgba(129,190,254,1) 50%,rgba(255,128,128,1) 100%);
+      background: linear-gradient(to right, rgba(129,190,254,1) 50%,rgba(255,128,128,1) 100%);
+      content: '';
     }
 
-    &:active {
-      color: $btn-2-color-active;
-      background: $btn-2-back-active;
+    &:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      z-index: 1;
+      background: rgb(129,190,254);
+      background: -moz-linear-gradient(left, rgba(129,190,254,1) 0%, rgba(255,128,128,1) 70%);
+      background: -webkit-linear-gradient(left, rgba(129,190,254,1) 0%,rgba(255,128,128,1) 70%);
+      background: linear-gradient(to right, rgba(129,190,254,1) 0%,rgba(255,128,128,1) 70%);
+      content: '';
+    }
+
+    span {
+      display: block;
+      position: relative;
+      padding: 23px 39px 20px;
+      z-index: 2;
+      border-radius: 30px;
+      background-color: #fff;
+      transition: background .3s ease-in-out;
+    }
+
+
+    &:hover span {
+      background-color: #efefef;
     }
   }
+}
+@media (min-width: $phone-landscape) {
+  .btn {
 
+  }
+}
+@media (min-width: $tablet-portrait) {
+  .btn {
+
+  }
+}
+@media (min-width: $tablet-landscape) {
+  .btn {
+
+  }
+}
+@media (min-width: $desktop) {
+  .btn {
+
+  }
 }

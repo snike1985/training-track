@@ -1,0 +1,30 @@
+.tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  background-color: #95c9ff;
+  color: #fff;
+  @include main-font-bold();
+}
+@media (min-width: $phone-landscape) {
+  .tag {
+
+  }
+}
+@media (min-width: $tablet-portrait) {
+  .tag {
+
+  }
+}
+@media (min-width: $tablet-landscape) {
+  .tag {
+
+  }
+}
+@media (min-width: $desktop) {
+  .tag {
+
+  }
+}
+

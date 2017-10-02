@@ -1,6 +1,78 @@
 .site {
-  @include justify;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  min-width: 320px;
+  @include main-font();
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 15px;
+    z-index: 2;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  &__center {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  &__title {
+    display: block;
+    max-width: 1170px;
+    padding: 34px 15px;
+    margin: 0 auto;
+    color: #c4c4c4;
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  &__footer {
+    width: 100%;
+    max-width: 1170px;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center;
+
+    &-title {
+      display: block;
+      margin-bottom: 11px;
+      font-size: 32px;
+      letter-spacing: 1px;
+      color: #dbdbdb;
+      @include main-font-thin()
+    }
+
+    &-copyright {
+      padding: 20px 0 0;
+      font-size: 10px;
+      color: #081715;
+
+      span {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      a,
+      a:visited {
+        color: #081715;
+      }
+    }
+  }
 }
 @media (min-width: $phone-landscape) {
   .site {
@@ -20,6 +92,26 @@
 @media (min-width: $desktop) {
   .site {
 
+    &__header {
+      height: 182px;
+      padding: 40px 78px 40px 112px;
+    }
+
+    &__footer {
+      padding: 94px 15px;
+
+      &-copyright {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 96px 0 0;
+        font-size: 14px;
+
+        span {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 
