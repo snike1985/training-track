@@ -99,6 +99,16 @@
     }
   }
 }
+
+.site__header_static {
+
+  .menu-btn {
+
+    span {
+      background: #081715;
+    }
+  }
+}
 @media (min-width: $phone-landscape) {
   .menu {
 
@@ -157,6 +167,17 @@
   }
 
   .menu-btn { display: none }
+
+  .site__header_static {
+
+    .menu {
+
+      a,
+      a:visited {
+        color: #081715;
+      }
+    }
+  }
 }
 @media (min-width: $desktop) {
   .menu {

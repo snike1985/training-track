@@ -9,6 +9,17 @@
   background-repeat: no-repeat;
   text-align: center;
 
+  &_main {
+
+    .page-title__wrap {
+      max-width: 800px;
+      @include main-font-bold();
+      font-size: 58px;
+      color: rgb(255, 255, 255);
+      line-height: 1.121;
+    }
+  }
+
   &__wrap {
     max-width: 500px;
     margin: 0 auto;
@@ -22,6 +33,43 @@
     }
 
     p { line-height: 22px }
+  }
+
+  &_triangle {
+
+    .page-title__wrap {
+      position: relative;
+
+      canvas {
+        @include absoluteCenter();
+        width: 405px;
+        height: 345px;
+      }
+
+      &:before {
+        @include absoluteCenter();
+        width: 405px;
+        height: 345px;
+        margin-top: -24px;
+        box-sizing: border-box;
+        background: url("../img/triangle.png") no-repeat center;
+        pointer-events: none;
+        content: '';
+      }
+
+      //&:after {
+      //  @include absoluteCenter();
+      //  width: 403px;
+      //  height: 343px;
+      //  box-sizing: border-box;
+      //  background: url("../pic/page-title/pic1.jpg") no-repeat center;
+      //  background-attachment: fixed;
+      //  background-size: cover;
+      //  transition: 0.4s cubic-bezier(1, -1, 0, 2);
+      //  clip-path: polygon(50% 5%, 0% 100%, 100% 100%);
+      //  content: '';
+      //}
+    }
   }
 }
 @media (min-width: $phone-landscape) {

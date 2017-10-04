@@ -20,13 +20,15 @@ var paths = {
         {
             dist: 'index.min.js',
             contains: [
-                'app/js/jquery.index.js'
+                'app/js/jquery.index.js',
+                'app/js/jquery.popup.js',
             ]
         },
         {
-            dist: 'ui.min.js',
+            dist: 'list.min.js',
             contains: [
-                'app/js/jquery.popup.js',
+                'app/js/jquery.index.js',
+                'app/js/jquery.filter-autocomplete.js',
                 'app/js/jquery.websters-select.js'
             ]
         },

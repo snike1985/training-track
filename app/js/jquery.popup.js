@@ -14,7 +14,7 @@
 
         //private properties
         var _self = this,
-            _popupPadding = 40,
+            _popupPadding = 0,
             _btnShow =  $( '.popup__open' ),
             _obj = obj,
             _btnClose = _obj.find( '.popup__close, .popup__cancel' ),

@@ -21,11 +21,10 @@
             _device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ),
             _text = $( '<span class="websters-select__item"></span>' ),
             _wrap = $( '<div class="websters-select"></div>' ),
-            _window = $( window ),
             _body = $( 'body' ),
             _opened = false,
             _popup, _scroll;
-
+        
         //private methods
         var _addWrap = function(){
                 var curText = '';
@@ -37,7 +36,7 @@
                 _obj.wrap( _wrap );
                 _wrap = _obj.parent();
                 _wrap.append( '<div class="websters-select__arrow"></div>' );
-                _obj.before( _text );
+                _obj.after( _text );
                 _obj.find( 'option' ).each( function(){
                     var curItem = $( this );
 
@@ -45,6 +44,10 @@
                         curText = curItem.text();
                     }
                 } );
+
+                if ( _obj.data('placeholder') ) {
+                    curText = _obj.data('placeholder')
+                }
 
                 if( curText == '' ){
                     curText =  _obj.find( 'option').eq( 0 ).text();
@@ -81,7 +84,15 @@
             _onEvents = function(){
                 _obj.on( 'change', function() {
                     _text.text( $( this ).find( 'option:selected' ).text() );
+
                 } );
+                $(document).on(
+                    "change",
+                    "select",
+                    function() {
+                        $( this).prev().text( $( this ).find( 'option:selected' ).text() );
+                    }
+                );
 
                 if( _optionType == 1 && !_device ){
                     _wrap.on( {
@@ -96,15 +107,15 @@
 
                         }
                     } );
-
-                    _window.on( {
-                        'click': function(){
-                            if( _opened ){
-                                _hidePopup();
-                            }
-                        }
-                    } );
                 }
+                _body.on( {
+                    'click': function(){
+                        if( _opened ){
+                            _hidePopup();
+                        }
+                    }
+                } );
+
             },
             _selectViewType = function(){
 
@@ -123,12 +134,9 @@
             _showPopup = function(){
                 var selects = $( 'select' ),
                     list = $( '<ul></ul>'),
-                    curScroll = _window.scrollTop(),
-                    offset = _wrap.offset(),
-                    maxHeight = 0,
                     curIndex = _obj.find( 'option:selected' ).index(),
                     id = Math.round( Math.random() * 1000 );
-
+                
                 selects.each( function(){
                     if( this !== _obj[ 0 ] && this.obj.checkOpened() ){
                         this.obj.close();
@@ -154,21 +162,19 @@
                 } );
 
                 _popup.append( list );
-                _body.append( _popup );
+                _wrap.append( _popup );
                 _wrap.addClass( 'websters-select_opened' );
 
                 _popup.css( {
                     width: _wrap.outerWidth(),
-                    left: offset.left,
-                    top: offset.top + _wrap.outerHeight()
+                    left: -1,
+                    top: _wrap.outerHeight()
                 } );
 
                 maxHeight = _popup.outerHeight();
                 if( maxHeight > _popup.find( 'li' ).eq( 0 ).outerHeight() * _visible ){
                     _popup.height( _popup.find( 'li' ).eq( 0 ).outerHeight() * _visible );
-                    _scroll = _popup.niceScroll( {
-                        horizrailenabled: false
-                    } );
+                    _scroll = _popup.perfectScrollbar();
                 }
 
                 if( _showType == 1 ){
@@ -204,7 +210,7 @@
             return _opened;
         };
         _self.close = function(){
-          _hidePopup();
+            _hidePopup();
         };
 
 

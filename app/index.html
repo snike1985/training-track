@@ -21,7 +21,7 @@
         <header class="site__header">
 
             <!-- logo -->
-            <a href="#" class="logo"><img src="img/logo.png" alt="trainingtrack"></a>
+            <h1 class="logo"><img src="img/logo.png" alt="trainingtrack"></h1>
             <!-- /logo -->
 
             <!-- menu-btn -->
@@ -38,7 +38,7 @@
                     <a href="#">FAQ</a>
                 </nav>
                 <!-- /menu__navigation -->
-                <a href="#" class="link">Je suis un coach</a>
+                <a href="#" class="link popup__open" data-popup="application">Je suis un coach</a>
             </div>
             <!-- /menu -->
 
@@ -49,86 +49,175 @@
         <main class="site__content">
 
             <!-- page-title -->
-            <div class="page-title" style="background-image: url(pic/page-title/pic1.jpg)">
+            <div class="page-title page-title_main" style="background-image: url(pic/page-title/pic2.jpg)">
 
                 <!-- page-title__wrap -->
                 <div class="page-title__wrap">
-                    <h1>Sample page</h1>
-                    <p>Strenght does not come from physical capacity. It comes from an indomitable will.</p>
+                    <div>Trouvez votre coach</div>
+                    <div>et
+                        <mark class="words" data-duration="2500">
+                            <span class="is-hidden colorBlue">perdez du poids</span>
+                            <span class="is-hidden colorRed">gagnez en force</span>
+                            <span class="is-hidden colorYellow">soyez endurant</span>
+                            <span class="is-hidden colorGreen">restez en forme</span>
+                        </mark>
+                    </div>
                 </div>
                 <!-- /page-title__wrap -->
 
             </div>
             <!-- /page-title -->
 
-            <!-- site__title -->
-            <strong class="site__title">Typography</strong>
-            <!-- /site__title -->
-
-            <!-- content -->
-            <div class="content">
-                
-                <!-- content__left -->
-                <aside class="content__left">
-                    <h1>Heading 1</h1>
-                    <h2>Heading 2</h2>
-                    <h3>Heading 3</h3>
-                    <h4>Heading 4</h4>
-                    <h5>Heading 5</h5>
-                    <h6>Heading 6</h6>
-                    <strong>Sub heading</strong>
-                </aside>
-                <!-- /content__left -->
-
-                <!-- content__right -->
-                <div class="content__right">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                    <a href="#" class="link">Link to page</a>
-                </div>
-                <!-- /content__right -->
-                
-            </div>
-            <!-- /content -->
-
-            <!-- site__title -->
-            <strong class="site__title">Buttons</strong>
-            <!-- /site__title -->
-
             <!-- site__center -->
             <div class="site__center">
-                <a href="#" class="btn btn_color"><span>Primary button</span></a>
-                <a href="#" class="btn">Secondary button</a>
-                <a href="#" class="link">Link to page</a>
-            </div>
-            <!-- /site__center -->
 
-            <!-- site__title -->
-            <strong class="site__title">Miscellaneous elements</strong>
-            <!-- /site__title -->
+                <!-- list -->
+                <div class="list">
 
-            <!-- site__center -->
-            <div class="site__center">
-                <!-- thumbnail -->
-                <div class="thumbnail">
-                    <img src="pic/profile/pic1.jpg" alt="">
+                    <!-- list__head -->
+                    <div class="list__head">
+
+                        <!-- site__title -->
+                        <strong class="site__title">Les coachs du mois</strong>
+                        <!-- /site__title -->
+
+                        <a href="#" class="btn btn_color"><span>Voir tous les coachs</span></a>
+
+                    </div>
+                    <!-- /list__head -->
+
+                    <!-- list__wrap -->
+                    <div class="list__wrap">
+
+                        <!-- list__item -->
+                        <a href="" class="list__item">
+                            <div class="list__item-pic" style="background-image: url(pic/list/pic1.jpg)">
+                                <!-- list__item-description -->
+                                <div class="list__item-description">
+                                    <!-- thumbnail -->
+                                    <div class="thumbnail thumbnail_lower">
+                                        <img src="pic/profile/pic1.jpg" alt="">
+                                    </div>
+                                    <!-- /thumbnail -->
+                                    <strong class="colorBlue"><span class="colorRed">Force,</span> Perte de poids</strong>
+                                    <p>A sport about technique every bit as it is about pure strength. Weightlifting has been around as long as competition itself....</p>
+                                    <span class="list__item-arrow">
+                                        <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                            <g>
+                                               <path d="M50,21.7c-15.6,0-28.3,12.7-28.3,28.3S34.4,78.3,50,78.3S78.3,65.6,78.3,50S65.6,21.7,50,21.7z M50,74
+                                                    c-13.2,0-23.9-10.7-24-24c0-13.2,10.7-23.9,24-24c13.2,0,23.9,10.7,24,24C73.9,63.2,63.2,73.9,50,74z"></path>
+                                                <path d="M55.9,38.6c-0.9-0.9-2.2-0.8-3.1,0c-0.8,0.8-0.8,2.2,0,3.1l6.2,6.2H35.8c-1.2,0-2.2,1-2.2,2.2c0,1.2,1,2.2,2.2,2.2H59
+                                                        l-6.2,6.2c-0.8,0.8-0.8,2.2,0,3.1s2.2,0.8,3.1,0l9.9-9.9l0.6-1.5l-0.6-1.5L55.9,38.6z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <!-- /list__item-description -->
+                            </div>
+                            <dl class="list__item-info">
+                                <dt>
+                                    Djihed Naga
+                                    <!-- rate -->
+                                <div class="rate rate_lower">
+                                    <span class="rate__wrap" style="width: 100%"></span>
+                                </div>
+                                <!-- /rate -->
+                                </dt>
+                                <dd>
+                                    <span class="colorRed">Force</span>, Perte de poids
+                                </dd>
+                            </dl>
+                        </a>
+                        <!-- /list__item -->
+
+                        <!-- list__item -->
+                        <a href="" class="list__item">
+                            <span class="list__item-pic" style="background-image: url(pic/list/pic2.jpg)">
+                                <!-- list__item-description -->
+                                <div class="list__item-description">
+                                    <!-- thumbnail -->
+                                    <div class="thumbnail thumbnail_lower">
+                                        <img src="pic/profile/pic1.jpg" alt="">
+                                    </div>
+                                    <!-- /thumbnail -->
+                                    <strong><span class="colorBlue">Force</span>, Perte de poids</strong>
+                                    <p>A sport about technique every bit as it is about pure strength. Weightlifting has been around as long as competition itself....</p>
+                                    <span class="list__item-arrow">
+                                        <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                            <g>
+                                               <path d="M50,21.7c-15.6,0-28.3,12.7-28.3,28.3S34.4,78.3,50,78.3S78.3,65.6,78.3,50S65.6,21.7,50,21.7z M50,74
+                                                    c-13.2,0-23.9-10.7-24-24c0-13.2,10.7-23.9,24-24c13.2,0,23.9,10.7,24,24C73.9,63.2,63.2,73.9,50,74z"></path>
+                                                <path d="M55.9,38.6c-0.9-0.9-2.2-0.8-3.1,0c-0.8,0.8-0.8,2.2,0,3.1l6.2,6.2H35.8c-1.2,0-2.2,1-2.2,2.2c0,1.2,1,2.2,2.2,2.2H59
+                                                        l-6.2,6.2c-0.8,0.8-0.8,2.2,0,3.1s2.2,0.8,3.1,0l9.9-9.9l0.6-1.5l-0.6-1.5L55.9,38.6z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <!-- /list__item-description -->
+                            </span>
+                            <dl class="list__item-info">
+                                <dt>
+                                    John Doe
+                                    <!-- rate -->
+                                <div class="rate rate_lower">
+                                    <span class="rate__wrap" style="width: 100%"></span>
+                                </div>
+                                <!-- /rate -->
+                                </dt>
+                                <dd>
+                                    <span class="colorBlue">Perte de poids</span>
+                                </dd>
+                            </dl>
+                        </a>
+                        <!-- /list__item -->
+
+                        <!-- list__item -->
+                        <a href="" class="list__item">
+                            <span class="list__item-pic" style="background-image: url(pic/list/pic3.jpg)">
+                                <!-- list__item-description -->
+                                <div class="list__item-description">
+                                    <!-- thumbnail -->
+                                    <div class="thumbnail thumbnail_lower">
+                                        <img src="pic/profile/pic1.jpg" alt="">
+                                    </div>
+                                    <!-- /thumbnail -->
+                                    <strong><span class="colorGreen">Force</span>, Perte de poids</strong>
+                                    <p>A sport about technique every bit as it is about pure strength. Weightlifting has been around as long as competition itself....</p>
+                                    <span class="list__item-arrow">
+                                        <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                            <g>
+                                               <path d="M50,21.7c-15.6,0-28.3,12.7-28.3,28.3S34.4,78.3,50,78.3S78.3,65.6,78.3,50S65.6,21.7,50,21.7z M50,74
+                                                    c-13.2,0-23.9-10.7-24-24c0-13.2,10.7-23.9,24-24c13.2,0,23.9,10.7,24,24C73.9,63.2,63.2,73.9,50,74z"></path>
+                                                <path d="M55.9,38.6c-0.9-0.9-2.2-0.8-3.1,0c-0.8,0.8-0.8,2.2,0,3.1l6.2,6.2H35.8c-1.2,0-2.2,1-2.2,2.2c0,1.2,1,2.2,2.2,2.2H59
+                                                        l-6.2,6.2c-0.8,0.8-0.8,2.2,0,3.1s2.2,0.8,3.1,0l9.9-9.9l0.6-1.5l-0.6-1.5L55.9,38.6z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <!-- /list__item-description -->
+                            </span>
+                            <dl class="list__item-info">
+                                <dt>
+                                    Chloé Dupond
+                                    <!-- rate -->
+                                <div class="rate rate_lower">
+                                    <span class="rate__wrap" style="width: 100%"></span>
+                                </div>
+                                <!-- /rate -->
+                                </dt>
+                                <dd>
+                                    <span class="colorGreen">Remise en forme</span>
+                                </dd>
+                            </dl>
+                        </a>
+                        <!-- /list__item -->
+
+                    </div>
+                    <!-- /list__wrap -->
+
                 </div>
-                <!-- /thumbnail -->
+                <!-- /list -->
 
-                <!-- tag -->
-                <span class="tag">Crossfit level 1</span>
-                <!-- /tag -->
-
-                <!-- rate -->
-                <div class="rate">
-                    <span class="rate__wrap" style="width: 80%"></span>
-                </div>
-                <!-- /rate -->
             </div>
             <!-- /site__center -->
 
@@ -193,14 +282,84 @@
     <!-- /site -->
 
     <!-- popup -->
-    <div class="popup">
+    <div class="popup popup_white">
 
         <!-- popup__wrap -->
         <div class="popup__wrap">
 
             <!-- popup__content -->
-            <div class="popup__content popup__text">
+            <div class="popup__content popup__application">
+                <button class="popup__close">
+                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
+                            c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
+                            c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
+                    </svg>
+                </button>
 
+                <h2>Demande spontanée de coaching</h2>
+
+                <!-- application -->
+                <form action="#" class="application site__form">
+
+                    <!-- site__form-row -->
+                    <div class="site__form-row">
+                        <!-- site__form-double -->
+                        <div class="site__form-double">
+                            <div class="site__form-field">
+                                <input type="text" name="surname" placeholder="Prénom">
+                                <i>
+                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                </i>
+                            </div>
+                            <div class="site__form-field"><input type="text" name="name" placeholder="Nom"></div>
+                        </div>
+                        <!-- /site__form-double -->
+
+                        <!-- site__form-field -->
+                        <div class="site__form-field">
+                            <input type="email" name="email" placeholder="Email">
+                            <i>
+                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                    <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
+                                         M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
+                                        l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
+                                        c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
+                                </svg>
+                            </i>
+                        </div>
+                        <!-- /site__form-field -->
+
+                    </div>
+                    <!-- /site__form-row -->
+
+                    <label for="message">Qu’attendez-vous du coaching ?</label>
+                    <textarea id="message" placeholder="Vos attentes"></textarea>
+
+                    <!-- application__btn -->
+                    <div class="application__btn">
+                        <button type="submit" class="btn btn_color btn_icon">
+                            <span>
+                                Envoyer
+                                <i>
+                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                    </svg>
+                                </i>
+                            </span>
+                        </button>
+                    </div>
+                    <!-- /application__btn -->
+                </form>
+                <!-- /application -->
             </div>
             <!-- /popup__content -->
 

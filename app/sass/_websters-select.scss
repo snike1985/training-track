@@ -1,61 +1,38 @@
 .websters-select {
-  overflow: hidden;
   display: inline-block;
   vertical-align: top;
-  box-sizing: border-box;
   position: relative;
-  width: 200px;
-  height: 22px;
-  border: 1px solid $websters-select-border;
+  width: 205px;
+  height: 50px;
+  font-size: 15px;
+  color: #4e4e4e;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(209, 209, 209);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  @include main-font-bold();
+
 
   &_opened {
 
     .websters-select__arrow {
-      transform: rotate(180deg);
-    }
 
+    }
   }
 
   &__arrow{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 20px;
-    transform-origin: center;
-    -webkit-transition: -webkit-transform 200ms ease-in-out;
-    transition: transform 200ms ease-in-out;
-
-    &:after,
-    &:before {
-      position: absolute;
-      top: 9px;
-      width: 10px;
-      height: 2px;
-      border-radius: 2px;
-      background: $websters-select-border;
-      content: '';
-    }
-
-    &:after {
-      left: 4px;
-      transform: rotate(70deg);
-
-    }
-
-    &:before {
-      right: 3px;
-      transform: rotate(-70deg);
-
-    }
+    display: none;
   }
 
   &__item {
     overflow: hidden;
     @include absoluteCenterY();
-    right: 20px;
-    left: 5px;
-    padding: 1px 5px 0;
+    left: 0;
+    right: 10px;
+    padding: 0 0 0 54px;
     box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -88,30 +65,72 @@
     position: absolute;
     z-index: 10;
     box-sizing: border-box;
-    border: 1px solid $websters-select-border;
-    background: $websters-select-popup-back;
+    font-size: 16px;
+    color: #4e4e4e;
+    text-align: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(209, 209, 209);
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+    @include main-font();
 
     ul {
       z-index: 1;
     }
 
     li {
-      white-space: nowrap;
+      position: relative;
       overflow: hidden;
+      padding: 10px 20px 10px 57px;
       cursor: pointer;
+      white-space: nowrap;
+
+      &:before {
+        @include absoluteCenterY();
+        left: 30px;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        box-sizing: border-box;
+        border: 1px solid #d1d1d1;
+        content: '';
+      }
+
+      &:after {
+        @include absoluteCenterY();
+        left: 34px;
+        width: 12px;
+        height: 12px;
+        opacity: 0;
+        border-radius: 2px;
+        box-sizing: border-box;
+        background-color: #8cc5ff;
+        content: '';
+      }
 
       &:hover {
-        color: $websters-select-popup-item-active-color;
-        background: $websters-select-popup-item-active-back;
+        background: #8cc5ff;
       }
 
       &.active {
-        color: $websters-select-popup-item-active-color !important;
-        background: $websters-select-popup-item-active-back !important;
+
+        &:after { opacity: 1 }
       }
-
     }
-
   }
+}
 
+.notes + .websters-select__item {
+
+  &:before {
+    @include absoluteCenterY();
+    left: 10px;
+    width: 34px;
+    height: 34px;
+    background: url("../img/icon-notes.svg") no-repeat center;
+    background-size: contain;
+    content: '';
+  }
 }

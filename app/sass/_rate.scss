@@ -1,10 +1,21 @@
 .rate {
-  width: 150px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 140px;
+  height: 20px;
   background: url("../img/star.png") repeat-x left center;
 
+  &_lower {
+    transform: matrix(.75,0,0,.75,0,0);
+    transform-origin: right;
+  }
+
   &__wrap {
-    display: block;
-    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     background: url("../img/star-active.png") repeat-x left center;
   }
 }
