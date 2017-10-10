@@ -1,9 +1,5 @@
 .application {
 
-  &__btn {
-    padding: 11px 3px;
-    text-align: right;
-  }
 }
 @media (min-width: $phone-landscape) {
   .application {
@@ -13,6 +9,10 @@
 @media (min-width: $tablet-portrait) {
   .application {
 
+    &__btn {
+      padding: 11px 3px;
+      text-align: right;
+    }
   }
 }
 @media (min-width: $tablet-landscape) {

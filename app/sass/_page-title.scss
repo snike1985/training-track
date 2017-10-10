@@ -1,28 +1,45 @@
 .page-title {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  min-height: 500px;
   padding: 85px 15px 15px;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   text-align: center;
 
   &_main {
 
+    .page-title__triangle {
+      width: 100%;
+      height: auto;
+      margin-top: -10px;
+    }
+
     .page-title__wrap {
       max-width: 800px;
+      margin-bottom: 200px;
       @include main-font-bold();
-      font-size: 58px;
+      font-size: 30px;
       color: rgb(255, 255, 255);
       line-height: 1.121;
+    }
+
+    .search {
+      @include absoluteCenterX();
+      top: 100%;
+      margin-top: 100px;
     }
   }
 
   &__wrap {
+    position: relative;
     max-width: 500px;
-    margin: 0 auto;
     color: #fff;
     font-size: 14px;
 
@@ -35,41 +52,11 @@
     p { line-height: 22px }
   }
 
-  &_triangle {
-
-    .page-title__wrap {
-      position: relative;
-
-      canvas {
-        @include absoluteCenter();
-        width: 405px;
-        height: 345px;
-      }
-
-      &:before {
-        @include absoluteCenter();
-        width: 405px;
-        height: 345px;
-        margin-top: -24px;
-        box-sizing: border-box;
-        background: url("../img/triangle.png") no-repeat center;
-        pointer-events: none;
-        content: '';
-      }
-
-      //&:after {
-      //  @include absoluteCenter();
-      //  width: 403px;
-      //  height: 343px;
-      //  box-sizing: border-box;
-      //  background: url("../pic/page-title/pic1.jpg") no-repeat center;
-      //  background-attachment: fixed;
-      //  background-size: cover;
-      //  transition: 0.4s cubic-bezier(1, -1, 0, 2);
-      //  clip-path: polygon(50% 5%, 0% 100%, 100% 100%);
-      //  content: '';
-      //}
-    }
+  &__triangle {
+    @include absoluteCenter();
+    width: 405px;
+    height: 345px;
+    pointer-events: none;
   }
 }
 @media (min-width: $phone-landscape) {
@@ -84,6 +71,7 @@
 }
 @media (min-width: $tablet-landscape) {
   .page-title {
+    height: auto;
     min-height: 623px;
     padding: 69px 20px 20px;
 
@@ -97,11 +85,44 @@
 
       p { line-height: 30px }
     }
+
+    &_main {
+      -webkit-clip-path: polygon(100% 0, 100% 78%, 50% 100%, 0 78%, 0% 0%);
+      clip-path: polygon(100% 0, 100% 78%, 50% 100%, 0 78%, 0% 0%);
+      margin-bottom: -22%;
+
+      .page-title__triangle {
+        width: 110%;
+        margin-top: 24px;
+      }
+
+      .page-title__wrap {
+        max-width: 800px;
+        @include main-font-bold();
+        font-size: 58px;
+        color: rgb(255, 255, 255);
+        line-height: 1.121;
+      }
+
+      .search {
+        margin-top: 40px;
+      }
+    }
   }
 }
 @media (min-width: $desktop) {
   .page-title {
 
+    &_main {
+      height: 910px;
+      justify-content: flex-start;
+      padding-top: 302px;
+
+      .page-title__triangle {
+        width: 133%;
+        margin-top: -45px;
+      }
+    }
   }
 }
 

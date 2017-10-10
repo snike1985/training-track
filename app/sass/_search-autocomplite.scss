@@ -1,11 +1,27 @@
 .search-autocomplite {
   margin-bottom: 10px;
 
+  &_localisation {
+
+    .search-autocomplite__inner {
+
+      label {
+
+        svg {
+          width: 30px;
+          height: 30px;
+          margin: 1px 0 0 3px;
+        }
+      }
+    }
+  }
+
   &__inner {
     position: relative;
     width: 235px;
     height: 50px;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 0 10px 0 54px;
     font-size: 15px;
     color: #4e4e4e;
     border-style: solid;
@@ -18,7 +34,7 @@
 
     label {
       position: absolute;
-      width: 45px;
+      width: 54px;
       top: 0;
       bottom: 0;
       left: 0;
@@ -26,9 +42,9 @@
 
       svg {
         @include absoluteCenter();
-        width: 16px;
-        height: 16px;
-        margin-left: 4px;
+        width: 21px;
+        height: 21px;
+        fill: #e0e0e0;
       }
 
     }
@@ -37,9 +53,24 @@
       border: none;
       height: inherit;
       width: 100%;
+      margin-top: -2px;
       @include main-font-bold();
       font-size: 15px;
       color: #4e4e4e;
+      background-color: transparent;
+
+      &::-webkit-input-placeholder {
+        color: #4e4e4e;
+      }
+      &::-moz-placeholder {
+        color: #4e4e4e;
+      }
+      &:-ms-input-placeholder {
+        color: #4e4e4e;
+      }
+      &:-moz-placeholder {
+        color: #4e4e4e;
+      }
     }
 
   }
@@ -221,26 +252,6 @@
 
 @media (min-width: $desktop) {
   .search-autocomplite {
-
-    &__inner{
-      padding-left: 25px;
-      background-color: transparent;
-
-      label{
-        width: 11px;
-
-        svg{
-          margin-left: 0;
-          fill: #e0e0e0;
-        }
-
-      }
-
-      input {
-        background-color: transparent;
-      }
-
-    }
 
     &__list-btn svg{
       fill: #fff;

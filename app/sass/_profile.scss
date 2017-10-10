@@ -60,7 +60,7 @@
 
   &__description {
     padding: 15px 0;
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(0, 0, 0);
     line-height: 1.5;
 
@@ -101,6 +101,7 @@
     &__description {
       width: calc(100% - 420px);
       padding: 57px 30px 57px 60px;
+      font-size: 16px;
     }
   }
 }

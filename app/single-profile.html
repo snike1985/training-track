@@ -60,6 +60,10 @@
                 </div>
                 <!-- /page-title__wrap -->
 
+                <!-- page-title_triangle -->
+                <canvas class="page-title__triangle" data-fill="#ff8080"></canvas>
+                <!-- /page-title_triangle -->
+
             </div>
             <!-- /page-title -->
 
@@ -89,7 +93,7 @@
                             <li>Autres: Remise en forme, Perte de poids</li>
                         </ul>
 
-                        <a href="#" class="btn btn_color"><span>Réserver une séance</span></a>
+                        <a href="#" class="btn btn_color popup__open" data-popup="book"><span>Réserver une séance</span></a>
 
                         <!-- profile__cart-icon -->
                         <div class="profile__cart-icon">
@@ -264,7 +268,7 @@
 
                     <!-- comments__footer -->
                     <footer class="comments__footer">
-                        <a href="#" class="link">Voir les 23 commentaires</a>
+                        <a href="#" class="link popup__open" data-popup="add-review">Voir les 23 commentaires</a>
                     </footer>
                     <!-- /comments__footer -->
 
@@ -341,6 +345,7 @@
 
             <!-- popup__content -->
             <div class="popup__content popup__photos">
+
                 <!-- big-photos -->
                 <div class="big-photos">
                     <div class="swiper-container">
@@ -365,6 +370,330 @@
                     </div>
                 </div>
                 <!-- /big-photos -->
+
+            </div>
+            <!-- /popup__content -->
+
+            <!-- popup__content -->
+            <div class="popup__content popup__add-review">
+                <button class="popup__close">
+                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
+                            c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
+                            c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
+                    </svg>
+                </button>
+
+                <h2>Ajouter une note</h2>
+
+                <!-- add-review -->
+                <form action="#" class="add-review site__form">
+
+                    <!-- site__form-row -->
+                    <div class="site__form-row">
+                        <!-- site__form-double -->
+                        <div class="site__form-double">
+                            <div class="site__form-field">
+                                <input type="text" name="surname" placeholder="Prénom" required>
+                                <i>
+                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                </i>
+                            </div>
+                            <div class="site__form-field">
+                                <input type="text" name="name" placeholder="Nom" required>
+                                <i>
+                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                </i>
+                            </div>
+                        </div>
+                        <!-- /site__form-double -->
+
+                        <!-- site__form-field -->
+                        <div class="site__form-field">
+                            <input type="email" name="email" placeholder="Email" required>
+                            <i>
+                                <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                    <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
+                                         M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
+                                        l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
+                                        c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
+                                </svg>
+                            </i>
+                        </div>
+                        <!-- /site__form-field -->
+
+                    </div>
+                    <!-- /site__form-row -->
+
+                    <label for="review" class="add-review__inline">Votre note
+                        <!-- rate -->
+                        <div class="rate rate_higher">
+                            <span class="rate__wrap" style="width: 80%"></span>
+                        </div>
+                        <!-- /rate -->
+                    </label>
+                    <textarea id="review" placeholder="Votre commentaire"></textarea>
+
+                    <!-- add-review__btn -->
+                    <div class="add-review__btn">
+                        <button type="submit" class="btn btn_color btn_icon">
+                            <span>
+                                Envoyer
+                                <i>
+                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                    </svg>
+                                </i>
+                            </span>
+                        </button>
+                    </div>
+                    <!-- /add-review__btn -->
+                </form>
+                <!-- /add-review -->
+            </div>
+            <!-- /popup__content -->
+
+            <!-- popup__content -->
+            <div class="popup__content popup__book">
+                <button class="popup__close">
+                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
+                            c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
+                            c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
+                    </svg>
+                </button>
+
+                <h2>Réserver un coach</h2>
+
+                <!-- book -->
+                <form action="#" class="book site__form">
+
+                    <!-- book__steps -->
+                    <div class="book__steps">
+                        <div class="swiper-container">
+
+                            <div class="swiper-pagination"></div>
+
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+
+                                    <!-- site__form-row -->
+                                    <div class="site__form-row">
+
+                                        <!-- site__form-double -->
+                                        <div class="site__form-double">
+                                            <div class="site__form-field">
+                                                <input type="text" name="surname" placeholder="Prénom" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                                </i>
+                                            </div>
+                                            <div class="site__form-field">
+                                                <input type="text" name="name" placeholder="Nom" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <!-- /site__form-double -->
+
+                                        <!-- site__form-double -->
+                                        <div class="site__form-double">
+                                            <!-- site__form-field -->
+                                            <div class="site__form-field">
+                                                <input type="email" name="email" placeholder="Email" required>
+                                                <i>
+                                                    <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
+                                                             M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
+                                                            l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
+                                                            c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                            <!-- /site__form-field -->
+                                            <div class="site__form-field">
+                                                <input type="tel" name="telephone" placeholder="Téléphone" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M25.5,17.5h0.3c2,0.1,3.8,1,5.5,2c3.5,2.1,6.6,4.9,9,8.1c1.5,1.9,2.7,4.5,1.8,6.7c-1,2.6-4.5,3.7-5,6.5
+                                                            c-0.3,1.5,0.5,2.9,1.3,4.1c4.4,7.2,10.7,13.3,18,17.5c0.7,0.4,1.5,0.8,2.3,0.8h0.2c0.1,0,0.1-0.1,0.2-0.1c0.9-0.2,1.6-0.8,2.2-1.5
+                                                            c1.4-1.4,3.1-2.6,4.9-3.7c0.6-0.3,1.2-0.7,1.9-0.7h0.2c0.7,0.1,1.2,0.4,1.8,0.8c3.1,2,5.9,4.3,8.5,6.9c1.8,1.8,3.5,3.8,4,6.4
+                                                            c0.5,2.5-0.5,5.1-2.2,6.9c-1.7,1.9-4,3-6.5,3.6c-1.5,0.4-3,0.5-4.6,0.5c-3.5,0-7-0.8-10.3-2c-13.7-4.7-25-14.7-33.2-26.6
+                                                            c-3.5-5-6.5-10.5-7.8-16.4C16.7,31.9,17.1,17.5,25.5,17.5 M25.5,10.3c-4.2,0-8,1.8-10.7,5.1C9,22.7,9.9,34.9,10.8,39
+                                                            c1.3,6.2,4.3,12.4,9,19.1c10,14.3,22.7,24.4,36.8,29.2c4.6,1.6,8.8,2.4,12.7,2.4c2.2,0,4.3-0.2,6.3-0.7c4.2-1,7.6-2.9,10.1-5.7
+                                                            c3.4-3.6,4.9-8.5,4-13.1c-0.9-5-4.3-8.4-5.9-10.1c-2.9-2.9-6.1-5.6-9.7-7.9c-0.1,0-0.1-0.1-0.2-0.1c-0.9-0.6-2.6-1.6-4.9-1.8h-0.1
+                                                            H68c-2.6,0-4.4,1-5.4,1.6c-1.7,1-3.3,2-4.7,3.3c-5.1-3.4-9.5-7.7-12.8-12.8c1.2-1.1,2.8-2.7,3.7-5.1c1-2.5,1.9-7.6-2.7-13.8
+                                                            c-3-4-6.8-7.5-11.1-10c-1.9-1.2-5-2.8-8.7-3h-0.2C26,10.3,25.8,10.3,25.5,10.3L25.5,10.3z"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <!-- /site__form-double -->
+
+                                        <!-- site__form-location -->
+                                        <div class="site__form-location">
+                                            <!-- site__form-field -->
+                                            <div class="site__form-field">
+                                                <input type="text" name="location" placeholder="Rue et numéro" required>
+                                                <i>
+                                                    <svg class="location" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M49.5,22.5c-9.9,0-18,8.1-18,18s8.1,18,18,18s18-8.1,18-18S59.4,22.5,49.5,22.5z M49.5,50.5c-5.5,0-10-4.5-10-10
+                                                            s4.5-10,10-10s10,4.5,10,10S55,50.5,49.5,50.5z M49.5,2.5c-21,0-38,16.9-38,37.6c0,31.3,34.2,56.5,35.6,57.6
+                                                            c0.7,0.5,1.5,0.8,2.4,0.8s1.6-0.3,2.4-0.8c1.5-1.1,35.6-26.3,35.6-57.6C87.5,19.4,70.5,2.5,49.5,2.5L49.5,2.5z M49.5,89.4
+                                                            c-7.4-6.1-30-26.4-30-49.3c0-16.3,13.5-29.6,30-29.6s30,13.3,30,29.6C79.5,63,56.9,83.3,49.5,89.4z"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                            <!-- /site__form-field -->
+                                            <input type="text" name="codePostal" placeholder="Code Postal" required>
+                                        </div>
+                                        <!-- /site__form-location -->
+
+                                    </div>
+                                    <!-- /site__form-row -->
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <!-- site__form-row -->
+                                    <div class="site__form-row">
+
+                                        <!-- site__form-double -->
+                                        <div class="site__form-double">
+                                            <div class="site__form-field">
+                                                <input type="text" name="surname" placeholder="Prénom" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                                </i>
+                                            </div>
+                                            <div class="site__form-field">
+                                                <input type="text" name="name" placeholder="Nom" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                        <g>
+                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                />
+                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                        </g>
+                                    </svg>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <!-- /site__form-double -->
+
+                                        <!-- site__form-double -->
+                                        <div class="site__form-double">
+                                            <!-- site__form-field -->
+                                            <div class="site__form-field">
+                                                <input type="email" name="email" placeholder="Email" required>
+                                                <i>
+                                                    <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
+                                                             M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
+                                                            l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
+                                                            c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                            <!-- /site__form-field -->
+                                            <div class="site__form-field">
+                                                <input type="tel" name="telephone" placeholder="Téléphone" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M25.5,17.5h0.3c2,0.1,3.8,1,5.5,2c3.5,2.1,6.6,4.9,9,8.1c1.5,1.9,2.7,4.5,1.8,6.7c-1,2.6-4.5,3.7-5,6.5
+                                                            c-0.3,1.5,0.5,2.9,1.3,4.1c4.4,7.2,10.7,13.3,18,17.5c0.7,0.4,1.5,0.8,2.3,0.8h0.2c0.1,0,0.1-0.1,0.2-0.1c0.9-0.2,1.6-0.8,2.2-1.5
+                                                            c1.4-1.4,3.1-2.6,4.9-3.7c0.6-0.3,1.2-0.7,1.9-0.7h0.2c0.7,0.1,1.2,0.4,1.8,0.8c3.1,2,5.9,4.3,8.5,6.9c1.8,1.8,3.5,3.8,4,6.4
+                                                            c0.5,2.5-0.5,5.1-2.2,6.9c-1.7,1.9-4,3-6.5,3.6c-1.5,0.4-3,0.5-4.6,0.5c-3.5,0-7-0.8-10.3-2c-13.7-4.7-25-14.7-33.2-26.6
+                                                            c-3.5-5-6.5-10.5-7.8-16.4C16.7,31.9,17.1,17.5,25.5,17.5 M25.5,10.3c-4.2,0-8,1.8-10.7,5.1C9,22.7,9.9,34.9,10.8,39
+                                                            c1.3,6.2,4.3,12.4,9,19.1c10,14.3,22.7,24.4,36.8,29.2c4.6,1.6,8.8,2.4,12.7,2.4c2.2,0,4.3-0.2,6.3-0.7c4.2-1,7.6-2.9,10.1-5.7
+                                                            c3.4-3.6,4.9-8.5,4-13.1c-0.9-5-4.3-8.4-5.9-10.1c-2.9-2.9-6.1-5.6-9.7-7.9c-0.1,0-0.1-0.1-0.2-0.1c-0.9-0.6-2.6-1.6-4.9-1.8h-0.1
+                                                            H68c-2.6,0-4.4,1-5.4,1.6c-1.7,1-3.3,2-4.7,3.3c-5.1-3.4-9.5-7.7-12.8-12.8c1.2-1.1,2.8-2.7,3.7-5.1c1-2.5,1.9-7.6-2.7-13.8
+                                                            c-3-4-6.8-7.5-11.1-10c-1.9-1.2-5-2.8-8.7-3h-0.2C26,10.3,25.8,10.3,25.5,10.3L25.5,10.3z"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <!-- /site__form-double -->
+
+                                    </div>
+                                    <!-- /site__form-row -->
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <h4>Merci !</h4>
+                                    <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
+                                        contactons rapidement.</p>
+
+                                </div>
+                            </div>
+
+                            <!-- book__btns -->
+                            <div class="book__btns">
+                                <a href="#" class="btn btn_2 btn_icon-revert book__prev">
+                                    <i>
+                                        <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                            <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                        </svg>
+                                    </i>
+                                    Précédent
+                                </a>
+                                <a href="#" class="btn btn_color btn_icon book__next">
+                                    <span>
+                                        Suivant
+                                        <i>
+                                            <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                    s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /book__btns -->
+                        </div>
+                    </div>
+                    <!-- /book__steps -->
+
+                </form>
+                <!-- /book -->
             </div>
             <!-- /popup__content -->
 

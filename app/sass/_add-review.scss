@@ -1,0 +1,64 @@
+.add-review {
+
+  &.site__form {
+
+    label.add-review__inline {
+
+      .rate {
+        margin: 12px 0;
+      }
+    }
+  }
+}
+@media (min-width: $phone-landscape) {
+  .add-review {
+
+  }
+}
+@media (min-width: $tablet-portrait) {
+  .add-review {
+
+    &__btn {
+      padding: 11px 3px;
+      text-align: right;
+    }
+
+    &.site__form {
+
+      &-row {
+        margin-bottom: 49px;
+      }
+
+      textarea {
+        height: 140px;
+      }
+
+      label.add-review__inline {
+        display: flex !important;
+        align-items: center;
+        margin-bottom: 26px;
+
+        .rate {
+          margin: 0 0 0 26px;
+        }
+      }
+    }
+
+    &__btn {
+      display: flex;
+      justify-content: flex-end;
+      padding: 19px 0 8px;
+    }
+  }
+}
+@media (min-width: $tablet-landscape) {
+  .add-review {
+
+  }
+}
+@media (min-width: $desktop) {
+  .add-review {
+
+  }
+}
+

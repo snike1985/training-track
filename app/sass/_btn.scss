@@ -1,10 +1,13 @@
 .btn {
   overflow: hidden;
   position: relative;
-  display: inline-block;
-  padding: 23px 30px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  padding: 20px 30px;
   border: 3px solid #efefef;
-  border-radius: 30px;
+  border-radius: 28px;
   background-color: #fff;
   color: #090909;
   font-size: 12px;
@@ -17,10 +20,16 @@
     background-color: #efefef;
   }
 
+  &.btn_2 {
+    border-color: #cacaca;
+  }
+
   &.btn_color {
+    display: inline-block;
     padding: 3px;
     border: none;
     will-change: transform;
+    background-color: transparent;
 
     &:before {
       width: 150%;
@@ -39,11 +48,14 @@
     }
 
     span {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 49px;
       position: relative;
-      padding: 20px 27px 17px;
+      padding: 17px 27px;
       z-index: 2;
-      border-radius: 30px;
+      border-radius: 25px;
       background-color: #fff;
       transition: background .3s ease-in-out;
     }
@@ -61,24 +73,51 @@
   }
 
   &.btn_icon {
+    display: inline-block;
+    background-color: transparent;
 
     span {
       display: flex;
       align-items: center;
-      padding: 20px 22px 17px;
+      justify-content: flex-start;
+    }
 
-      i {
-        margin-left: 20px;
+    i {
+      margin-left: 20px;
 
-        svg {
-          width: 9px;
-          height: 13px;
-          fill: #cacaca;
-          transition: fill .3s ease-in-out;
-        }
+      svg {
+        width: 9px;
+        height: 13px;
+        fill: #cacaca;
+        transition: fill .3s ease-in-out;
       }
     }
 
+    &:hover {
+
+      svg { fill: #090909 }
+    }
+  }
+
+  &.btn_icon-revert {
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    i {
+      margin-right: 20px;
+
+      svg {
+        width: 9px;
+        height: 13px;
+        transform: matrix(-1,0,0,1,0,0);
+        fill: #cacaca;
+        transition: fill .3s ease-in-out;
+      }
+    }
     &:hover {
 
       svg { fill: #090909 }
@@ -97,19 +136,23 @@
 }
 @media (min-width: $tablet-landscape) {
   .btn {
-    padding: 23px 39px 20px;
+    height: 61px;
+    border-radius: 30px;
+    padding: 20px 39px;
 
     &.btn_color {
 
       span {
-        padding: 20px 36px 17px;
+        height: 55px;
+        border-radius: 27px;
+        padding: 17px 36px;
       }
     }
 
     &.btn_icon {
 
       span {
-        padding: 20px 31px 17px;
+        padding: 17px 31px;
       }
     }
   }

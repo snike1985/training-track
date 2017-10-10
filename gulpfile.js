@@ -22,6 +22,7 @@ var paths = {
             contains: [
                 'app/js/jquery.index.js',
                 'app/js/jquery.popup.js',
+                'app/js/jquery.websters-select.js'
             ]
         },
         {
@@ -114,13 +115,13 @@ gulp.task( 'scripts', function () {
 
 gulp.task('images', function() {
     return gulp.src(paths.images)
-        .pipe(imagemin({optimizationLevel: 5}))
+        // .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('pictures', function() {
     return gulp.src(paths.pictures)
-        .pipe(imagemin({optimizationLevel: 5}))
+        // .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest('dist/pic'));
 });
 
