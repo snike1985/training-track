@@ -151,7 +151,7 @@
                     'submit': function () {
 
                         console.log('submit');
-
+                        _sendRequest();
                         return false;
                     }
                 });
@@ -176,9 +176,11 @@
                 _next.on({
                     'click': function () {
 
+                        if ($(this).hasClass('submit')) {
+                            console.log('this is submit button');
+                            _obj.trigger('submit');
+                        }
                         var activeSlide = $(this).parents('.swiper-slide-active');
-
-                        console.log(activeSlide);
 
                         if ( _checkStep( activeSlide ) ) {
 
@@ -229,9 +231,10 @@
             },
             _sendRequest = function () {
 
+            console.log(_obj.serialize());
                 _request.abort();
                 _request = $.ajax({
-                    url: 'php/send.php',
+                    url: _obj.data('action'),
                     data: {
                         address: _obj.serialize()
                     },
@@ -240,11 +243,11 @@
                     type: 'get',
                     success: function (data) {
 
-
+                        console.log('success');
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {
-
+                            console.error(XMLHttpRequest);
                         }
                     }
                 });
