@@ -90,8 +90,9 @@
 
   &__photos {
     background: none;
-    padding: 0;
+    padding: 0 !important;
     width: auto;
+    max-width: 100%;
     border-radius: 0;
 
     > * {

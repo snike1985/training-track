@@ -4,6 +4,7 @@
   position: relative;
   width: 205px;
   height: 50px;
+  margin-bottom: 15px;
   font-size: 15px;
   color: #4e4e4e;
   border-style: solid;
@@ -37,6 +38,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     text-align: left;
+    pointer-events: none;
   }
 
   &_mobile {

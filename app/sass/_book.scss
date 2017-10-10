@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 25px;
   }
 
   &__next,
@@ -28,6 +28,10 @@
       background-repeat: no-repeat;
       background-image: url("../img/default-avatar.png");
     }
+  }
+
+  &__checkbox {
+    margin-bottom: 12px;
   }
 
   .site__form-justify {
@@ -87,11 +91,21 @@
   }
 
   .swiper-pagination-progress {
+    display: flex;
     height: 8px;
     background-color: #ebebeb;
 
     .swiper-pagination-progressbar {
+      z-index: 1;
       background-color: #8cc5ff;
+    }
+
+    .steps {
+      position: relative;
+      z-index: 2;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0 2px;
     }
   }
 
@@ -108,6 +122,9 @@
 @media (min-width: $tablet-portrait) {
   .book {
 
+    .site__form {
+      height: 180px;
+    }
   }
 }
 @media (min-width: $tablet-landscape) {

@@ -21,6 +21,7 @@ var paths = {
             dist: 'index.min.js',
             contains: [
                 'app/js/jquery.index.js',
+                'app/js/jquery.form.validator.js',
                 'app/js/jquery.popup.js',
                 'app/js/jquery.websters-select.js'
             ]

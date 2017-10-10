@@ -277,6 +277,7 @@
 
             </div>
             <!-- /site__center -->
+
         </main>
         <!-- /site__content -->
 
@@ -491,6 +492,62 @@
 
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
+                                    <!-- site__form-row -->
+                                    <div class="site__form-row">
+
+                                        <div class="site__form-field site__form-field_date">
+                                            <input type="date" name="date" placeholder="Date et heure" required>
+                                            <i>
+                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <path d="M22.3,88.7h55.3c3.9,0,7-3.1,7-7V25.8c0-3.9-3.1-7-7-7H68v-4.5c0-1.7-1.3-3-3-3s-3,1.3-3,3v4.5H37.9v-4.5c0-1.7-1.3-3-3-3
+                                                            s-3,1.3-3,3v4.5h-9.6c-3.9,0-7,3.1-7,7v55.8C15.3,85.6,18.5,88.7,22.3,88.7L22.3,88.7z M77.7,82.7H22.3c-0.6,0-1-0.4-1-1V46.9h57.3
+                                                            v34.7C78.7,82.2,78.2,82.7,77.7,82.7L77.7,82.7z M22.3,24.8h9.6v6.5c0,1.7,1.3,3,3,3s3-1.3,3-3v-6.5h24.2v6.5c0,1.7,1.3,3,3,3
+                                                            c1.7,0,3-1.3,3-3v-6.5h9.6c0.6,0,1,0.4,1,1v15.1l-57.4,0V25.8C21.3,25.3,21.8,24.8,22.3,24.8L22.3,24.8z"/>
+                                                    </svg>
+                                            </i>
+                                        </div>
+
+                                        <!-- book__checkbox -->
+                                        <div class="book__checkbox">
+                                            <!-- nice-checkbox -->
+                                            <div class="nice-checkbox">
+                                                <input id="check1" type="checkbox">
+                                                <label for="check1">Un coaching a l’extérieur me convient</label>
+                                            </div>
+                                            <!-- /nice-checkbox -->
+
+                                            <!-- nice-checkbox -->
+                                            <div class="nice-checkbox">
+                                                <input id="check2" type="checkbox" checked>
+                                                <label for="check2">Un coaching à domicile me convient</label>
+                                            </div>
+                                            <!-- /nice-checkbox -->
+                                        </div>
+                                        <!-- /book__checkbox -->
+
+                                    </div>
+                                    <!-- /site__form-row -->
+
+                                    <label for="dateMessage">Dites nous en plus sur le coaching souhaité</label>
+                                    <textarea id="dateMessage" placeholder="" required></textarea>
+
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns">
+                                        <a href="#" class="btn btn_color btn_icon book__next">
+                                            <span>
+                                                Suivant
+                                                <i>
+                                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                    </svg>
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!-- /site__form-btns -->
+                                </div>
+                                <div class="swiper-slide">
 
                                     <!-- site__form-row -->
                                     <div class="site__form-row">
@@ -581,113 +638,60 @@
 
                                     </div>
                                     <!-- /site__form-row -->
-                                </div>
-                                <div class="swiper-slide">
 
-                                    <!-- site__form-row -->
-                                    <div class="site__form-row">
-
-                                        <!-- site__form-double -->
-                                        <div class="site__form-double">
-                                            <div class="site__form-field">
-                                                <input type="text" name="surname" placeholder="Prénom" required>
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns site__form-btns_double">
+                                        <a href="#" class="btn btn_2 btn_icon-revert book__prev">
+                                            <i>
+                                                <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                    <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                        s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                </svg>
+                                            </i>
+                                            Précédent
+                                        </a>
+                                        <button type="submit" class="btn btn_color btn_icon book__next">
+                                            <span>
+                                                Terminer
                                                 <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
-                                                </i>
-                                            </div>
-                                            <div class="site__form-field">
-                                                <input type="text" name="name" placeholder="Nom" required>
-                                                <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
-                                                </i>
-                                            </div>
-                                        </div>
-                                        <!-- /site__form-double -->
-
-                                        <!-- site__form-double -->
-                                        <div class="site__form-double">
-                                            <!-- site__form-field -->
-                                            <div class="site__form-field">
-                                                <input type="email" name="email" placeholder="Email" required>
-                                                <i>
-                                                    <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
-                                                             M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
-                                                            l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
-                                                            c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
+                                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
                                                     </svg>
                                                 </i>
-                                            </div>
-                                            <!-- /site__form-field -->
-                                            <div class="site__form-field">
-                                                <input type="tel" name="telephone" placeholder="Téléphone" required>
-                                                <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <path d="M25.5,17.5h0.3c2,0.1,3.8,1,5.5,2c3.5,2.1,6.6,4.9,9,8.1c1.5,1.9,2.7,4.5,1.8,6.7c-1,2.6-4.5,3.7-5,6.5
-                                                            c-0.3,1.5,0.5,2.9,1.3,4.1c4.4,7.2,10.7,13.3,18,17.5c0.7,0.4,1.5,0.8,2.3,0.8h0.2c0.1,0,0.1-0.1,0.2-0.1c0.9-0.2,1.6-0.8,2.2-1.5
-                                                            c1.4-1.4,3.1-2.6,4.9-3.7c0.6-0.3,1.2-0.7,1.9-0.7h0.2c0.7,0.1,1.2,0.4,1.8,0.8c3.1,2,5.9,4.3,8.5,6.9c1.8,1.8,3.5,3.8,4,6.4
-                                                            c0.5,2.5-0.5,5.1-2.2,6.9c-1.7,1.9-4,3-6.5,3.6c-1.5,0.4-3,0.5-4.6,0.5c-3.5,0-7-0.8-10.3-2c-13.7-4.7-25-14.7-33.2-26.6
-                                                            c-3.5-5-6.5-10.5-7.8-16.4C16.7,31.9,17.1,17.5,25.5,17.5 M25.5,10.3c-4.2,0-8,1.8-10.7,5.1C9,22.7,9.9,34.9,10.8,39
-                                                            c1.3,6.2,4.3,12.4,9,19.1c10,14.3,22.7,24.4,36.8,29.2c4.6,1.6,8.8,2.4,12.7,2.4c2.2,0,4.3-0.2,6.3-0.7c4.2-1,7.6-2.9,10.1-5.7
-                                                            c3.4-3.6,4.9-8.5,4-13.1c-0.9-5-4.3-8.4-5.9-10.1c-2.9-2.9-6.1-5.6-9.7-7.9c-0.1,0-0.1-0.1-0.2-0.1c-0.9-0.6-2.6-1.6-4.9-1.8h-0.1
-                                                            H68c-2.6,0-4.4,1-5.4,1.6c-1.7,1-3.3,2-4.7,3.3c-5.1-3.4-9.5-7.7-12.8-12.8c1.2-1.1,2.8-2.7,3.7-5.1c1-2.5,1.9-7.6-2.7-13.8
-                                                            c-3-4-6.8-7.5-11.1-10c-1.9-1.2-5-2.8-8.7-3h-0.2C26,10.3,25.8,10.3,25.5,10.3L25.5,10.3z"/>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                        </div>
-                                        <!-- /site__form-double -->
-
+                                            </span>
+                                        </button>
                                     </div>
-                                    <!-- /site__form-row -->
+                                    <!-- /site__form-btns -->
                                 </div>
                                 <div class="swiper-slide">
 
-                                    <h4>Merci !</h4>
-                                    <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
-                                        contactons rapidement.</p>
+                                    <!-- thankYou -->
+                                    <div class="thankYou">
+                                        <h4 class="thankYou__title">Merci !</h4>
+                                        <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
+                                            contactons rapidement.</p>
+                                    </div>
+                                    <!-- /thankYou -->
 
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns">
+
+                                        <a href="#" class="btn btn_color btn_icon book__next">
+                                            <span>
+                                                Continuer la navigation
+                                                <i>
+                                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                    </svg>
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!-- /site__form-btns -->
                                 </div>
                             </div>
-
-                            <!-- book__btns -->
-                            <div class="book__btns">
-                                <a href="#" class="btn btn_2 btn_icon-revert book__prev">
-                                    <i>
-                                        <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
-                                            <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
-                                                s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
-                                        </svg>
-                                    </i>
-                                    Précédent
-                                </a>
-                                <a href="#" class="btn btn_color btn_icon book__next">
-                                    <span>
-                                        Suivant
-                                        <i>
-                                            <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
-                                                <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
-                                                    s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
-                                            </svg>
-                                        </i>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /book__btns -->
                         </div>
                     </div>
                     <!-- /book__steps -->

@@ -81,6 +81,18 @@
       display: block;
       position: relative;
 
+      &_date {
+        width: 165px;
+        margin-bottom: 17px;
+
+        i {
+          svg {
+            width: 29px;
+            height: 29px;
+          }
+        }
+      }
+
       i {
         display: flex;
         align-items: center;
@@ -145,6 +157,24 @@
       border-radius: 3px;
       background-color: rgb(255, 255, 255);
       @include main-font();
+    }
+
+    input,
+    textarea {
+
+      &.valid {
+
+        &::-webkit-input-placeholder {color: #e7e7e7}
+        &:-moz-placeholder           {color: #e7e7e7}
+        &:-ms-input-placeholder      {color: #e7e7e7}
+      }
+      &.not-valid {
+        border-color: red;
+
+        &::-webkit-input-placeholder {color: red}
+        &:-moz-placeholder           {color: red}
+        &:-ms-input-placeholder      {color: red}
+      }
     }
 
     label {
@@ -216,6 +246,13 @@
       }
     }
 
+    &-btns {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      &_double { justify-content: space-between }
+    }
   }
 }
 @media (min-width: $phone-landscape) {

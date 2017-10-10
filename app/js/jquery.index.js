@@ -30,8 +30,8 @@
             new Words( $(this) );
         } );
 
-        $('.steps').each( function() {
-            new Steps( $(this) );
+        $('.step').each( function() {
+            new Step( $(this) );
         } );
 
     });
@@ -44,7 +44,9 @@
             _steps = _obj.find('.swiper-pagination'),
             _items = _obj.find('.swiper-slide'),
             _next = _obj.find('.inscription__next'),
-            _prev = _obj.find('.inscription__prev');
+            _prev = _obj.find('.inscription__prev'),
+            _window = $(window),
+            _swiper;
 
         //private methods
         var _addEvents = function() {
@@ -58,6 +60,23 @@
                     }
                 });
 
+                _window.on({
+                    'resize': function () {
+
+                        if ( _obj.parent('.popup__content') ) {
+                            _checkPopupWidth();
+                            _swiper.update();
+                        } else {
+                            _swiper.update();
+                        }
+
+                        var stepWidth = 100/_items.length + '%';
+                        _items.each(function () {
+                            _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                        });
+                    }
+                });
+
                 _next.on({
                     'click': function () {
 
@@ -68,11 +87,16 @@
                 });
 
             },
-            _getScrollWidth = function (){
+            _checkPopupWidth = function() {
+                var curWidth = $(window).width() - 20;
 
+                if ( curWidth > 589 ) {
+                    curWidth = 589;
+                }
+                _obj.parent('.popup__content').css({ 'width': curWidth + 'px' });
             },
             _initSlider = function() {
-                var swiper = new Swiper(_slider, {
+                _swiper = new Swiper(_slider, {
                     pagination: _steps,
                     nextButton: _next,
                     prevButton: _prev,
@@ -82,10 +106,21 @@
                     touchRatio: 0,
                     paginationClickable: true
                 });
+
+                var stepWidth = 100/_items.length + '%';
+                _items.each(function () {
+                    _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                });
             },
             _init = function() {
                 _addEvents();
-                _initSlider()
+
+                if ( _obj.parent('.popup__content') ) {
+                    _checkPopupWidth();
+                    _initSlider();
+                } else {
+                    _initSlider();
+                }
             };
 
         //public properties
@@ -103,7 +138,11 @@
             _steps = _obj.find('.swiper-pagination'),
             _items = _obj.find('.swiper-slide'),
             _next = _obj.find('.book__next'),
-            _prev = _obj.find('.book__prev');
+            _prev = _obj.find('.book__prev'),
+            _window = $(window),
+            _swiper,
+            _fields = _obj.find( ':required' ),
+            _request = new XMLHttpRequest();
 
         //private methods
         var _addEvents = function() {
@@ -117,23 +156,130 @@
                     }
                 });
 
+                _window.on({
+                    'resize': function () {
+
+                        if ( _obj.parent('.popup__content') ) {
+                            _checkPopupWidth();
+                            _swiper.update();
+                        } else {
+                            _swiper.update();
+                        }
+
+                        var stepWidth = 100/_items.length + '%';
+                        _items.each(function () {
+                            _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                        });
+                    }
+                });
+
                 _next.on({
                     'click': function () {
 
-                        console.log(_obj.serializeArray());
+                        var activeSlide = $(this).parents('.swiper-slide-active');
 
+                        console.log(activeSlide);
+
+                        if ( _checkStep( activeSlide ) ) {
+
+                            _swiper.slideNext();
+                        }
                         return false;
                     }
                 });
 
-            },
-            _getScrollWidth = function (){
+                _fields.on({
+                    'focus': function () {
+                        $( this ).removeClass( 'not-touched' );
+                        $( this ).removeClass( 'not-valid' );
+                    }
+                });
 
             },
+            _checkPopupWidth = function() {
+                var curWidth = $(window).width() - 20;
+
+                if ( curWidth > 589 ) {
+                    curWidth = 589;
+                }
+                _obj.parent('.popup__content').css({ 'width': curWidth + 'px' });
+            },
+            _checkStep = function (curStep) {
+
+                var requaredInputs = curStep.find( ':required' ),
+                    notValid = false;
+
+                requaredInputs.each(function () {
+                    var curElem = $(this),
+                        curValue = curElem.val();
+
+                    if ( curValue == '' ) {
+                        curElem.addClass('not-valid');
+                        notValid = true;
+                    } else {
+                        curElem.removeClass('not-valid');
+                    }
+                });
+
+                if ( notValid ) {
+                    return false;
+                } else  {
+                    return true;
+                }
+            },
+            _sendRequest = function () {
+
+                _request.abort();
+                _request = $.ajax({
+                    url: 'php/send.php',
+                    data: {
+                        address: _obj.serialize()
+                    },
+                    dataType: 'json',
+                    timeout: 20000,
+                    type: 'get',
+                    success: function (data) {
+
+
+                    },
+                    error: function (XMLHttpRequest) {
+                        if (XMLHttpRequest.statusText != "abort") {
+
+                        }
+                    }
+                });
+
+                currentItem.addClass('loading');
+
+                // $.ajax({
+                //     url: $('body').data('action'),
+                //     dataType: 'html',
+                //     timeout: 20000,
+                //     type: 'get',
+                //     data: {
+                //         action: 'test',
+                //         page: currentItem.data('page')
+                //     },
+                //     success: function (data) {
+                //
+                //         currentItem.removeClass('loading');
+                //
+                //         currentItem.html(data);
+                //
+                //         updateInit();
+                //
+                //     },
+                //     error: function (XMLHttpRequest) {
+                //         if (XMLHttpRequest.statusText != "abort") {
+                //             console.log(XMLHttpRequest);
+                //         }
+                //     }
+                // });
+            },
             _initSlider = function() {
-                var swiper = new Swiper(_slider, {
+                _swiper = new Swiper(_slider, {
                     pagination: _steps,
-                    nextButton: _next,
+                    // nextButton: _next,
                     prevButton: _prev,
                     paginationType: 'progress',
                     spaceBetween: 30,
@@ -141,10 +287,21 @@
                     touchRatio: 0,
                     paginationClickable: true
                 });
+
+                var stepWidth = 100/_items.length + '%';
+                _items.each(function () {
+                    _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                });
             },
             _init = function() {
                 _addEvents();
-                _initSlider()
+
+                if ( _obj.parent('.popup__content') ) {
+                    _checkPopupWidth();
+                    _initSlider();
+                } else {
+                    _initSlider();
+                }
             };
 
         //public properties
@@ -217,13 +374,13 @@
         _init();
     };
 
-    var Steps = function(obj) {
+    var Step = function(obj) {
 
         //private properties
         var _obj = obj,
-            _items = _obj.find('.steps__item'),
-            _nextBtn = _obj.find('.steps__next'),
-            _prevBtn = _obj.find('.steps__prev');
+            _items = _obj.find('.step__item'),
+            _nextBtn = _obj.find('.step__next'),
+            _prevBtn = _obj.find('.step__prev');
 
         //private methods
         var _addEvents = function() {
@@ -241,15 +398,18 @@
                         _prev();
                     }
                 });
+                
+                _items.on({
+                    'submit': function () {
+                        
+                    }
+                })
 
             },
             _next = function (){
 
             },
             _prev = function() {
-
-            },
-            _hideMenu = function() {
 
             },
             _init = function() {
