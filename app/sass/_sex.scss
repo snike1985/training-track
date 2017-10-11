@@ -33,6 +33,19 @@
     }
   }
 }
+.not-valid + .sex,
+.not-valid + .sex + .sex {
+
+  label { color: red }
+}
+
+#radioSex {
+  position: absolute;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  clip: rect(0,0,0,0);
+}
 @media (min-width: $phone-landscape) {
   .sex {
 

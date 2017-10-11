@@ -9,12 +9,107 @@
 
     <title>Title</title>
 
+    <style>
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: #f5f5f5;
+        }
+        .loader.hide {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-animation: hideLoader 1s 1 ease-in-out both;
+            animation: hideLoader 1s 1 ease-in-out both;
+        }
+        .loader__wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            transform: translate(-50%,-50%);
+        }
+        .loader__wrap div {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 100%;
+            background-color: #94ddbd;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out both;
+            animation: bouncedelay 1.4s infinite ease-in-out both;
+        }
+        .loader__wrap div.loader__one {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+            background-color: #ff8080;
+        }
+        .loader__wrap div.loader__two {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+            background-color: #8cc5ff;
+        }
+
+        @-webkit-keyframes bouncedelay {
+            0%, 80%, 100% { -webkit-transform: scale(0) }
+            40% { -webkit-transform: scale(1) }
+        }
+
+        @keyframes bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+            40% {
+                transform: scale(1);
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @-webkit-keyframes hideLoader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+            }
+            100% {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        @keyframes hideLoader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+            }
+            100% {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+    </style>
+
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/perfect-scrollbar.css">
     <link rel="stylesheet" href="css/index.css">
 
 </head>
 <body>
+
+<!-- loader -->
+<div class="loader">
+    <!-- loader__wrap -->
+    <div class="loader__wrap">
+        <div class="loader__one"></div>
+        <div class="loader__two"></div>
+        <div class="loader__three"></div>
+    </div>
+    <!-- /loader__wrap -->
+</div>
+<!-- /loader -->
 
     <!-- site -->
     <div class="site">
@@ -94,7 +189,7 @@
                 <div class="easier__wrap">
 
                     <!-- easier__title -->
-                    <stong class="easier__title">Rien de plus simple.</stong>
+                    <strong class="easier__title">Rien de plus simple.</strong>
                     <!-- /easier__title -->
 
                     <!-- easier__steps -->
@@ -443,8 +538,8 @@
                     <label for="message">Qu’attendez-vous du coaching ?</label>
                     <textarea id="message" placeholder="Vos attentes"></textarea>
 
-                    <!-- application__btn -->
-                    <div class="application__btn">
+                    <!-- site__form-btns -->
+                    <div class="site__form-btns">
                         <button type="submit" class="btn btn_color btn_icon">
                             <span>
                                 Envoyer
@@ -457,7 +552,7 @@
                             </span>
                         </button>
                     </div>
-                    <!-- /application__btn -->
+                    <!-- /site__form-btns -->
                 </form>
                 <!-- /application -->
             </div>
@@ -476,7 +571,7 @@
                 <h2>Inscription en tant que coach</h2>
 
                 <!-- inscription -->
-                <form action="#" class="inscription site__form">
+                <form action="#" class="inscription site__form step">
 
                     <!-- inscription__steps -->
                     <div class="inscription__steps">
@@ -496,26 +591,26 @@
                                                 <input type="text" name="surname" placeholder="Prénom" required>
                                                 <i>
                                                     <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
+                                                        <g>
+                                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                                />
+                                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                                        </g>
+                                                    </svg>
                                                 </i>
                                             </div>
                                             <div class="site__form-field">
                                                 <input type="text" name="name" placeholder="Nom" required>
                                                 <i>
                                                     <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
+                                                        <g>
+                                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                                />
+                                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                                        </g>
+                                                    </svg>
                                                 </i>
                                             </div>
                                         </div>
@@ -557,9 +652,10 @@
 
                                         <!-- site__form-double -->
                                         <div class="site__form-double">
+                                            <input id="radioSex" type="text" required>
                                             <!-- site__form-field -->
                                             <div class="site__form-field sex">
-                                                <input id="male" type="radio" name="sex" value="male">
+                                                <input id="male" type="radio" name="sexFields" value="male">
                                                 <label for="male">
                                                     <i>
                                                         <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -574,7 +670,7 @@
                                             </div>
                                             <!-- /site__form-field -->
                                             <div class="site__form-field sex">
-                                                <input id="female" type="radio" name="sex" value="female">
+                                                <input id="female" type="radio" name="sexFields" value="female">
                                                 <label for="female">
                                                     <i>
                                                         <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -594,31 +690,56 @@
 
                                     <!-- site__form-justify -->
                                     <div class="site__form-justify">
-                                        <select>
-                                            <option value="0">Jour</option>
-                                            <option value="1">Jour 1</option>
-                                            <option value="2">Jour 2</option>
-                                            <option value="3">Jour 3</option>
-                                            <option value="4">Jour 4</option>
-                                            <option value="5">Jour 5</option>
-                                            <option value="6">Jour 6</option>
-                                        </select>
-                                        <select>
-                                            <option value="0">Mois</option>
-                                            <option value="1">Mois 1</option>
-                                            <option value="2">Mois 2</option>
-                                            <option value="3">Mois 3</option>
-                                            <option value="4">Mois 4</option>
-                                        </select>
-                                        <select>
-                                            <option value="0">Annee</option>
-                                            <option value="1">Annee 1</option>
-                                            <option value="2">Annee 2</option>
-                                            <option value="3">Annee 3</option>
-                                            <option value="4">Annee 4</option>
-                                        </select>
+                                        <div class="first site__form-select-required">
+                                            <input type="text" name="Jour" required>
+                                            <select>
+                                                <option value="0">Jour</option>
+                                                <option value="1">Jour 1</option>
+                                                <option value="2">Jour 2</option>
+                                                <option value="3">Jour 3</option>
+                                                <option value="4">Jour 4</option>
+                                                <option value="5">Jour 5</option>
+                                                <option value="6">Jour 6</option>
+                                            </select>
+                                        </div>
+                                        <div class="second site__form-select-required">
+                                            <input type="text" name="Mois" required>
+                                            <select>
+                                                <option value="0">Mois</option>
+                                                <option value="1">Mois 1</option>
+                                                <option value="2">Mois 2</option>
+                                                <option value="3">Mois 3</option>
+                                                <option value="4">Mois 4</option>
+                                            </select>
+                                        </div>
+                                        <div class="third site__form-select-required">
+                                            <input type="text" name="Annee" required>
+                                            <select>
+                                                <option value="0">Annee</option>
+                                                <option value="1">Annee 1</option>
+                                                <option value="2">Annee 2</option>
+                                                <option value="3">Annee 3</option>
+                                                <option value="4">Annee 4</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <!-- /site__form-justify -->
+
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns">
+                                        <a href="#" class="btn btn_color btn_icon step__next">
+                                    <span>
+                                        Suivant
+                                        <i>
+                                            <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                    s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                        </a>
+                                    </div>
+                                    <!-- /site__form-btns -->
                                 </div>
                                 <div class="swiper-slide">
 
@@ -627,6 +748,7 @@
                                         <span class="inscription__avatar-pic"></span>
                                         <!-- site__form-file -->
                                         <div class="site__form-file">
+                                            <input id="avatar" type="file" required>
                                             <label for="avatar">
                                                 <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                 <g>
@@ -640,7 +762,6 @@
                                             </svg>
                                                 Ajouter ma photo de profil
                                             </label>
-                                            <input id="avatar" type="file">
                                         </div>
                                         <!-- /site__form-file -->
                                     </div>
@@ -652,7 +773,7 @@
                                         <label for="commons">Je coach dans les communes suivantes</label>
 
                                         <div class="site__form-field">
-                                            <input id="commons" type="text" name="commons" placeholder="Communes">
+                                            <input id="commons" type="text" name="commons" placeholder="Communes" required>
                                             <i>
                                                 <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                     <g>
@@ -712,13 +833,38 @@
                                         
                                     </div>
                                     <!-- /site__form-row -->
+
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns site__form-btns_double">
+                                        <a href="#" class="btn btn_2 btn_icon-revert step__prev">
+                                            <i>
+                                                <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                            <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                        </svg>
+                                            </i>
+                                            Précédent
+                                        </a>
+                                        <a href="#" class="btn btn_color btn_icon step__next">
+                                    <span>
+                                        Suivant
+                                        <i>
+                                            <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                    s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                        </a>
+                                    </div>
+                                    <!-- /site__form-btns -->
                                 </div>
                                 <div class="swiper-slide">
 
                                     <!-- site__form-row -->
                                     <div class="site__form-row">
                                         <label for="inscription-message">Dites nous en plus sur votre service (expérience, diplôme)</label>
-                                        <textarea id="inscription-message" placeholder=""></textarea>
+                                        <textarea id="inscription-message" placeholder="" required></textarea>
                                     </div>
                                     <!-- /site__form-row -->
 
@@ -735,291 +881,19 @@
                                                 </svg>
                                         </i>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
 
-                                    <!-- site__form-row -->
-                                    <div class="site__form-row">
-                                        <label for="category">Quelle est votre catégorie principale ?</label>
-
-                                        <div class="site__form-field">
-                                            <input id="category" type="text" name="category" placeholder="Catégorie principale" required>
+                                    <!-- site__form-btns -->
+                                    <div class="site__form-btns site__form-btns_double">
+                                        <a href="#" class="btn btn_2 btn_icon-revert step__prev">
                                             <i>
-                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                    <path d="M95,47.5c0-12-8.5-22-20-24.5V7.5c0-3-2-5-5-5H10c-3,0-5,2-5,5v75c0,3,2,5,5,5h45v5c0,2,1,4,3,4.5c2,1,4,0.5,5.5-1l6.5-6.5
-                                                        l6.5,6.5c1.5,1.5,3.5,2,5.5,1s3-2.5,3-4.5v-25C91,63,95,55.5,95,47.5z M15,77.5v-65h50V23h-0.5C53.5,25.5,45,35.5,45,47.5
-                                                        c0,8,4,15.5,10,20v10H15z M75,80.5L73.5,79c-2-2-5-2-7,0L65,80.5V72c3.5,0.5,7,0.5,10,0V80.5z M66,62c-6.5-1.5-11-7.5-11-14.5
-                                                        c0-8.5,6.5-15,15-15s15,6.5,15,15C85,57.5,76,64.5,66,62z"/>
-                                                </svg>
-                                            </i>
-                                        </div>
-                                    </div>
-                                    <!-- /site__form-row -->
-
-                                    <!-- site__form-row -->
-                                    <div class="site__form-row">
-                                        <label for="category-secondary">Dans quelles autres catégories vous situez-vous ?</label>
-
-                                        <div class="site__form-field">
-                                            <input id="category-secondary" type="text" name="category-secondary" placeholder="Catégories secondaires" required>
-                                            <i>
-                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                    <path d="M95,47.5c0-12-8.5-22-20-24.5V7.5c0-3-2-5-5-5H10c-3,0-5,2-5,5v75c0,3,2,5,5,5h45v5c0,2,1,4,3,4.5c2,1,4,0.5,5.5-1l6.5-6.5
-                                                        l6.5,6.5c1.5,1.5,3.5,2,5.5,1s3-2.5,3-4.5v-25C91,63,95,55.5,95,47.5z M15,77.5v-65h50V23h-0.5C53.5,25.5,45,35.5,45,47.5
-                                                        c0,8,4,15.5,10,20v10H15z M75,80.5L73.5,79c-2-2-5-2-7,0L65,80.5V72c3.5,0.5,7,0.5,10,0V80.5z M66,62c-6.5-1.5-11-7.5-11-14.5
-                                                        c0-8.5,6.5-15,15-15s15,6.5,15,15C85,57.5,76,64.5,66,62z"/>
-                                                </svg>
-                                            </i>
-                                        </div>
-
-                                        <!-- tags-wrap -->
-                                        <div class="tags-wrap">
-                                            <span class="tag tag_close">
-                                                Force
-                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                    <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
-                                                        c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
-                                                        c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
-                                                </svg>
-                                            </span>
-                                            <span class="tag tag_close">
-                                                Perte de poids
-                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                    <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
-                                                        c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
-                                                        c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <!-- /tags-wrap -->
-                                    </div>
-                                    <!-- /site__form-row -->
-
-                                    <!-- site__form-row -->
-                                    <div class="site__form-row">
-
-                                        <!-- site__form-file -->
-                                        <div class="site__form-file">
-                                            <label for="picture">
-                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                <g>
-                                                    <path d="M32.5,33.8l13.9-13.9v43.9c0,2,1.7,3.6,3.6,3.6c2,0,3.6-1.7,3.6-3.6V19.9l13.9,13.9c1.4,1.4,3.8,1.4,5.1,0
-                                                        c0.7-0.7,1-1.6,1-2.6s-0.4-1.9-1-2.6l-20-20c-0.6-0.6-1.5-1-2.4-1l-0.3-0.1l-0.2,0.1c-0.8,0.1-1.7,0.4-2.3,1l-20,20.1
-                                                        c-0.7,0.7-1,1.6-1,2.6s0.4,1.9,1,2.6C28.7,35.1,31.1,35.1,32.5,33.8L32.5,33.8z"/>
-                                                    <path d="M90.1,55.1c-2,0-3.6,1.7-3.6,3.6v14.5c0,6.6-5.4,12-12,12l-49,0c-6.6,0-12-5.4-12-12l0-14.5c0-2-1.7-3.6-3.6-3.6
-                                                        c-2,0-3.6,1.7-3.6,3.6v14.5c0,10.6,8.6,19.3,19.3,19.3h49.1c10.6,0,19.3-8.6,19.3-19.3l0-14.5C93.8,56.8,92.2,55.1,90.1,55.1
-                                                        L90.1,55.1z"/>
-                                                </g>
-                                            </svg>
-                                                Ajouter mes photos pour le portfolio
-                                            </label>
-                                            <input id="picture" type="file">
-                                        </div>
-                                        <!-- /site__form-file -->
-
-                                        <!-- pictures -->
-                                        <div class="pictures">
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic1.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic2.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic3.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic2.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic1.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic3.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                            <a href="#" class="pictures__item">
-                                                <img src="pic/photos/thumb-pic1.jpg" alt="">
-                                                <span class="pictures__item-remove">
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                                        <g>
-                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
-                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
-                                                                S33.1,19.4,50,19.4z"/>
-                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
-                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
-                                                                <stop  offset="1" style="stop-color:#FF8080"/>
-                                                            </linearGradient>
-                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
-                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
-                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
-                                                        </g>
-                                                    </svg>
-                                                    Supprimer
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <!-- /pictures -->
-
-                                    </div>
-                                    <!-- /site__form-row -->
-
-                                    <button type="submit"></button>
-                                </div>
-                                <div class="swiper-slide">
-
-                                    <!-- thankYou -->
-                                    <div class="thankYou">
-                                        <div class="thankYou__title">Merci !</div>
-                                        <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
-                                            contactons rapidement.</p>
-                                    </div>
-                                    <!-- /thankYou -->
-
-                                </div>
-                            </div>
-
-                            <!-- inscription__btns -->
-                            <div class="inscription__btns">
-                                <a href="#" class="btn btn_2 btn_icon-revert inscription__prev">
-                                    <i>
-                                        <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
                                             <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
                                                 s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
                                         </svg>
-                                    </i>
-                                    Précédent
-                                </a>
-                                <a href="#" class="btn btn_color btn_icon inscription__next">
+                                            </i>
+                                            Précédent
+                                        </a>
+                                        <a href="#" class="btn btn_color btn_icon step__next">
                                     <span>
                                         Suivant
                                         <i>
@@ -1029,9 +903,331 @@
                                             </svg>
                                         </i>
                                     </span>
-                                </a>
+                                        </a>
+                                    </div>
+                                    <!-- /site__form-btns -->
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <!-- step__submited -->
+                                    <div class="step__submited">
+                                        <!-- site__form-row -->
+                                        <div class="site__form-row">
+                                            <label for="category">Quelle est votre catégorie principale ?</label>
+
+                                            <div class="site__form-field">
+                                                <input id="category" type="text" name="category" placeholder="Catégorie principale" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                    <path d="M95,47.5c0-12-8.5-22-20-24.5V7.5c0-3-2-5-5-5H10c-3,0-5,2-5,5v75c0,3,2,5,5,5h45v5c0,2,1,4,3,4.5c2,1,4,0.5,5.5-1l6.5-6.5
+                                                        l6.5,6.5c1.5,1.5,3.5,2,5.5,1s3-2.5,3-4.5v-25C91,63,95,55.5,95,47.5z M15,77.5v-65h50V23h-0.5C53.5,25.5,45,35.5,45,47.5
+                                                        c0,8,4,15.5,10,20v10H15z M75,80.5L73.5,79c-2-2-5-2-7,0L65,80.5V72c3.5,0.5,7,0.5,10,0V80.5z M66,62c-6.5-1.5-11-7.5-11-14.5
+                                                        c0-8.5,6.5-15,15-15s15,6.5,15,15C85,57.5,76,64.5,66,62z"/>
+                                                </svg>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <!-- /site__form-row -->
+
+                                        <!-- site__form-row -->
+                                        <div class="site__form-row">
+                                            <label for="category-secondary">Dans quelles autres catégories vous situez-vous ?</label>
+
+                                            <div class="site__form-field">
+                                                <input id="category-secondary" type="text" name="category-secondary" placeholder="Catégories secondaires" required>
+                                                <i>
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                    <path d="M95,47.5c0-12-8.5-22-20-24.5V7.5c0-3-2-5-5-5H10c-3,0-5,2-5,5v75c0,3,2,5,5,5h45v5c0,2,1,4,3,4.5c2,1,4,0.5,5.5-1l6.5-6.5
+                                                        l6.5,6.5c1.5,1.5,3.5,2,5.5,1s3-2.5,3-4.5v-25C91,63,95,55.5,95,47.5z M15,77.5v-65h50V23h-0.5C53.5,25.5,45,35.5,45,47.5
+                                                        c0,8,4,15.5,10,20v10H15z M75,80.5L73.5,79c-2-2-5-2-7,0L65,80.5V72c3.5,0.5,7,0.5,10,0V80.5z M66,62c-6.5-1.5-11-7.5-11-14.5
+                                                        c0-8.5,6.5-15,15-15s15,6.5,15,15C85,57.5,76,64.5,66,62z"/>
+                                                </svg>
+                                                </i>
+                                            </div>
+
+                                            <!-- tags-wrap -->
+                                            <div class="tags-wrap">
+                                            <span class="tag tag_close">
+                                                Force
+                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                    <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
+                                                        c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
+                                                        c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
+                                                </svg>
+                                            </span>
+                                                <span class="tag tag_close">
+                                                Perte de poids
+                                                <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                    <path d="M60.3,50l35.1-35.1c2.8-2.8,2.8-7.5,0-10.3c-2.8-2.8-7.5-2.8-10.3,0L50,39.7L14.9,4.6c-2.8-2.8-7.5-2.8-10.3,0
+                                                        c-2.8,2.8-2.8,7.5,0,10.3L39.7,50L4.6,85.1c-2.8,2.8-2.8,7.5,0,10.3c1.4,1.4,3.3,2.1,5.2,2.1s3.7-0.7,5.2-2.1l35.1-35.1l35.1,35.1
+                                                        c1.4,1.4,3.3,2.1,5.2,2.1c1.9,0,3.7-0.7,5.2-2.1c2.8-2.8,2.8-7.5,0-10.3L60.3,50z"/>
+                                                </svg>
+                                            </span>
+                                            </div>
+                                            <!-- /tags-wrap -->
+                                        </div>
+                                        <!-- /site__form-row -->
+
+                                        <!-- site__form-row -->
+                                        <div class="site__form-row">
+
+                                            <!-- site__form-file -->
+                                            <div class="site__form-file">
+                                                <input id="pic" type="file" required>
+                                                <label for="pic">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <path d="M32.5,33.8l13.9-13.9v43.9c0,2,1.7,3.6,3.6,3.6c2,0,3.6-1.7,3.6-3.6V19.9l13.9,13.9c1.4,1.4,3.8,1.4,5.1,0
+                                                                c0.7-0.7,1-1.6,1-2.6s-0.4-1.9-1-2.6l-20-20c-0.6-0.6-1.5-1-2.4-1l-0.3-0.1l-0.2,0.1c-0.8,0.1-1.7,0.4-2.3,1l-20,20.1
+                                                                c-0.7,0.7-1,1.6-1,2.6s0.4,1.9,1,2.6C28.7,35.1,31.1,35.1,32.5,33.8L32.5,33.8z"/>
+                                                            <path d="M90.1,55.1c-2,0-3.6,1.7-3.6,3.6v14.5c0,6.6-5.4,12-12,12l-49,0c-6.6,0-12-5.4-12-12l0-14.5c0-2-1.7-3.6-3.6-3.6
+                                                                c-2,0-3.6,1.7-3.6,3.6v14.5c0,10.6,8.6,19.3,19.3,19.3h49.1c10.6,0,19.3-8.6,19.3-19.3l0-14.5C93.8,56.8,92.2,55.1,90.1,55.1
+                                                                L90.1,55.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Ajouter mes photos pour le portfolio
+                                                </label>
+                                            </div>
+                                            <!-- /site__form-file -->
+
+                                            <!-- pictures -->
+                                            <div class="pictures">
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic1.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic2.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic3.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic2.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic1.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic3.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                                <a href="#" class="pictures__item">
+                                                    <img src="pic/photos/thumb-pic1.jpg" alt="">
+                                                    <span class="pictures__item-remove">
+                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.1245" y1="24.1239" x2="75.8768" y2="75.8763">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_1_)" d="M50,86.6c20.2,0,36.6-16.4,36.6-36.6c0-20.2-16.4-36.6-36.6-36.6c-20.2,0-36.6,16.4-36.6,36.6
+                                                                S29.8,86.6,50,86.6z M50,19.4c16.9,0,30.6,13.7,30.6,30.6c0,16.9-13.7,30.6-30.6,30.6c-16.9,0-30.6-13.7-30.6-30.6
+                                                                S33.1,19.4,50,19.4z"/>
+                                                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.8983" y1="35.9028" x2="64.0993" y2="64.1039">
+                                                                <stop  offset="0" style="stop-color:#81BEFE"/>
+                                                                <stop  offset="1" style="stop-color:#FF8080"/>
+                                                            </linearGradient>
+                                                            <path fill="url(#SVGID_2_)" class="st1" d="M35.9,64.1c0.6,0.6,1.4,0.9,2.1,0.9c0.7,0,1.5-0.3,2.1-0.9l9.9-9.9l9.9,9.9c0.6,0.6,1.4,0.9,2.1,0.9
+                                                                c0.7,0,1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2L54.2,50l9.9-9.9c1.2-1.2,1.2-3.1,0-4.2c-1.2-1.2-3.1-1.2-4.2,0L50,45.8l-9.9-9.9
+                                                                c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2l9.9,9.9l-9.9,9.9C34.7,61.1,34.7,63,35.9,64.1L35.9,64.1z"/>
+                                                        </g>
+                                                    </svg>
+                                                    Supprimer
+                                                </span>
+                                                </a>
+                                            </div>
+                                            <!-- /pictures -->
+
+                                        </div>
+                                        <!-- /site__form-row -->
+
+                                        <!-- site__form-btns -->
+                                        <div class="site__form-btns site__form-btns_double">
+                                            <a href="#" class="btn btn_2 btn_icon-revert step__prev">
+                                                <i>
+                                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                    <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                        s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                </svg>
+                                                </i>
+                                                Précédent
+                                            </a>
+                                            <button type="submit" class="btn btn_color btn_icon step__submit">
+                                            <span>
+                                                Terminer
+                                                <i>
+                                                    <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                        <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                            s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                    </svg>
+                                                </i>
+                                            </span>
+                                            </button>
+                                        </div>
+                                        <!-- /site__form-btns -->
+                                    </div>
+                                    <!-- /step__submited -->
+
+                                    <!-- step__thankyou -->
+                                    <div class="step__thankyou">
+                                        <!-- site__form-row -->
+                                        <div class="site__form-row">
+                                            <!-- thankYou -->
+                                            <div class="thankYou">
+                                                <h4 class="thankYou__title">Merci !</h4>
+                                                <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
+                                                    contactons rapidement.</p>
+                                            </div>
+                                            <!-- /thankYou -->
+                                        </div>
+                                        <!-- /site__form-row -->
+
+                                        <!-- site__form-btns -->
+                                        <div class="site__form-btns">
+
+                                            <a href="#" class="btn btn_color btn_icon">
+                                                <span>
+                                                    Continuer la navigation
+                                                    <i>
+                                                        <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                                            <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
+                                                                s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
+                                                        </svg>
+                                                    </i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <!-- /site__form-btns -->
+                                    </div>
+                                    <!-- /step__thankyou -->
+
+                                </div>
                             </div>
-                            <!-- /inscription__btns -->
                         </div>
                     </div>
                     <!-- /inscription__steps -->

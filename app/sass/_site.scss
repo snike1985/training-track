@@ -77,21 +77,25 @@
 
   &__form {
 
+    .site__form-field_date {
+      width: 180px;
+      margin-bottom: 17px;
+
+      input {
+        @include main-font-bold();
+      }
+
+      i {
+        svg {
+          width: 29px;
+          height: 29px;
+        }
+      }
+    }
+
     &-field {
       display: block;
       position: relative;
-
-      &_date {
-        width: 165px;
-        margin-bottom: 17px;
-
-        i {
-          svg {
-            width: 29px;
-            height: 29px;
-          }
-        }
-      }
 
       i {
         display: flex;
@@ -186,6 +190,18 @@
       @include main-font-bold();
     }
 
+    &-select-required {
+      position: relative;
+
+      input {
+        position: absolute;
+        pointer-events: none;
+        width: 0;
+        height: 0;
+        clip: rect(0,0,0,0);
+      }
+    }
+
     &-file {
       position: relative;
 
@@ -195,6 +211,10 @@
         height: 0;
         opacity: 0;
         pointer-events: none;
+
+        &.not-valid + label {
+          color: red;
+        }
       }
 
       label {
@@ -252,6 +272,39 @@
       align-items: center;
 
       &_double { justify-content: space-between }
+
+      .btn {
+        height: 40px;
+        padding: 10px 15px;
+        font-size: 10px;
+        letter-spacing: 1px;
+
+        span {
+
+        }
+
+        &.btn_icon-revert {
+
+          i {
+            margin-right: 10px;
+          }
+        }
+
+        &.btn_icon {
+
+          i {
+            margin-left: 10px;
+          }
+        }
+
+        &.btn_color {
+
+          span {
+            height: 34px;
+            padding: 7px 12px;
+          }
+        }
+      }
     }
   }
 }
@@ -327,6 +380,43 @@
       &-justify {
         display: flex;
         justify-content: space-between;
+      }
+
+      &-btns {
+        padding: 30px 0 7px;
+
+        .btn {
+          height: 55px;
+          padding: 20px 30px;
+          font-size: 12px;
+          letter-spacing: 2.1px;
+
+          span {
+
+          }
+
+          &.btn_icon-revert {
+
+            i {
+              margin-right: 20px;
+            }
+          }
+
+          &.btn_icon {
+
+            i {
+              margin-left: 20px;
+            }
+          }
+
+          &.btn_color {
+
+            span {
+              height: 49px;
+              padding: 17px 27px;
+            }
+          }
+        }
       }
     }
   }

@@ -91,13 +91,22 @@
 
     .site__form-justify {
 
-      .websters-select {
+      .first {
+        width: 113px;
+      }
+
+      .second {
         width: 203px;
+      }
+
+      .third {
+        width: 138px;
+      }
+
+      .websters-select {
+        width: 100%;
         font-size: 16px;
         @include main-font();
-
-        &:first-child { width: 113px }
-        &:last-child { width: 138px }
 
         &__item {
           padding: 0 20px 0 24px;
@@ -118,7 +127,7 @@
         &__popup {
 
           li {
-            padding: 10px 20px 10px 24px;
+            padding: 7px 20px 7px 24px;
 
             &:before,
             &:after { display: none }

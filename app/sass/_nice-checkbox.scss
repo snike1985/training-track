@@ -1,6 +1,5 @@
 .nice-checkbox {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   user-select: none;
 
   input[ type = checkbox ] {
@@ -27,12 +26,11 @@
     display: flex;
     text-align: left;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding-left: 29px;
+    padding-left: 20px;
     margin-bottom: 14px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     color: rgb(78, 78, 78);
     line-height: 0.936;
     @include main-font();
@@ -47,8 +45,8 @@
       position: absolute;
       top: -6px;
       left: 1px;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       border: 2px solid #fff;
       box-sizing: border-box;
       clip: rect(3px, 15px, 15px, 8px);
@@ -60,8 +58,8 @@
       position: absolute;
       top: -3px;
       left: 1px;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       border-width: 1px;
       border-color: rgb(209, 209, 209);
       border-style: solid;
@@ -71,7 +69,25 @@
       transition: background .3s ease-in-out, border .3s ease-in-out;
       content: '';
     }
-
   }
+}
 
+@media (min-width: $tablet-portrait) {
+  .nice-checkbox {
+
+    label {
+      padding-left: 29px;
+      font-size: 15px;
+
+      &:after {
+        width: 15px;
+        height: 15px;
+      }
+
+      &:before {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
 }

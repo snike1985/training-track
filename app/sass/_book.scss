@@ -93,6 +93,7 @@
   .swiper-pagination-progress {
     display: flex;
     height: 8px;
+    width: calc(100% - 1px);
     background-color: #ebebeb;
 
     .swiper-pagination-progressbar {

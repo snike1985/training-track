@@ -2,12 +2,11 @@
 
     $(function(){
 
-        $('.book').each( function() {
-            new Book( $(this) );
+        $('.rate_check').each( function() {
+            new Rate( $(this) );
         } );
-
-        $('.inscription').each( function() {
-            new Inscription( $(this) );
+        $('.step').each( function() {
+            new Step( $(this) );
         } );
 
         $('.menu').each( function() {
@@ -30,119 +29,30 @@
             new Words( $(this) );
         } );
 
-        $('.step').each( function() {
-            new Step( $(this) );
+        $('.comments').each( function() {
+            new Comments( $(this) );
         } );
 
     });
 
-    var Inscription = function(obj) {
+    var Step = function(obj) {
 
         //private properties
         var _obj = obj,
             _slider = _obj.find('.swiper-container'),
             _steps = _obj.find('.swiper-pagination'),
             _items = _obj.find('.swiper-slide'),
-            _next = _obj.find('.inscription__next'),
-            _prev = _obj.find('.inscription__prev'),
-            _window = $(window),
-            _swiper;
-
-        //private methods
-        var _addEvents = function() {
-
-                _obj.on({
-                    'submit': function () {
-
-                        console.log('submit');
-
-                        return false;
-                    }
-                });
-
-                _window.on({
-                    'resize': function () {
-
-                        if ( _obj.parent('.popup__content') ) {
-                            _checkPopupWidth();
-                            _swiper.update();
-                        } else {
-                            _swiper.update();
-                        }
-
-                        var stepWidth = 100/_items.length + '%';
-                        _items.each(function () {
-                            _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
-                        });
-                    }
-                });
-
-                _next.on({
-                    'click': function () {
-
-                        console.log(_obj.serializeArray());
-
-                        return false;
-                    }
-                });
-
-            },
-            _checkPopupWidth = function() {
-                var curWidth = $(window).width() - 20;
-
-                if ( curWidth > 589 ) {
-                    curWidth = 589;
-                }
-                _obj.parent('.popup__content').css({ 'width': curWidth + 'px' });
-            },
-            _initSlider = function() {
-                _swiper = new Swiper(_slider, {
-                    pagination: _steps,
-                    nextButton: _next,
-                    prevButton: _prev,
-                    paginationType: 'progress',
-                    spaceBetween: 30,
-                    effect: 'fade',
-                    touchRatio: 0,
-                    paginationClickable: true
-                });
-
-                var stepWidth = 100/_items.length + '%';
-                _items.each(function () {
-                    _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
-                });
-            },
-            _init = function() {
-                _addEvents();
-
-                if ( _obj.parent('.popup__content') ) {
-                    _checkPopupWidth();
-                    _initSlider();
-                } else {
-                    _initSlider();
-                }
-            };
-
-        //public properties
-
-        //public methods
-
-        _init();
-    };
-
-    var Book = function(obj) {
-
-        //private properties
-        var _obj = obj,
-            _slider = _obj.find('.swiper-container'),
-            _steps = _obj.find('.swiper-pagination'),
-            _items = _obj.find('.swiper-slide'),
-            _next = _obj.find('.book__next'),
-            _prev = _obj.find('.book__prev'),
+            _next = _obj.find('.step__next'),
+            _prev = _obj.find('.step__prev'),
+            _submit = _obj.find('.step__submit'),
             _window = $(window),
             _swiper,
             _fields = _obj.find( ':required' ),
-            _request = new XMLHttpRequest();
+            _request = new XMLHttpRequest(),
+            _radioButtons = _obj.find('.sex input'),
+            _radioRequired = _obj.find('#radioSex'),
+            _selectRequiredWraps = _obj.find('.site__form-select-required'),
+            _selectRequiredItems = _selectRequiredWraps.find('select');
 
         //private methods
         var _addEvents = function() {
@@ -151,8 +61,25 @@
                     'submit': function () {
 
                         console.log('submit');
-                        _sendRequest();
                         return false;
+                    }
+                });
+
+                _radioButtons.on({
+                    'click': function () {
+                        var curValue = $(this).val();
+
+                        _radioRequired.val(curValue);
+                    }
+                });
+
+                _selectRequiredItems.on({
+                    'change': function () {
+                        var curElem = $(this),
+                            curValue = curElem.val(),
+                            curInput = curElem.find('input');
+
+                        curInput.val(curValue);
                     }
                 });
 
@@ -176,16 +103,26 @@
                 _next.on({
                     'click': function () {
 
-                        if ($(this).hasClass('submit')) {
-                            console.log('this is submit button');
-                            _obj.trigger('submit');
-                        }
                         var activeSlide = $(this).parents('.swiper-slide-active');
 
                         if ( _checkStep( activeSlide ) ) {
 
                             _swiper.slideNext();
                         }
+                        return false;
+                    }
+                });
+
+                _submit.on({
+                    'click': function () {
+
+                        var activeSlide = $(this).parents('.swiper-slide-active');
+
+                        if ( _checkStep( activeSlide ) ) {
+
+                            _sendRequest();
+                        }
+
                         return false;
                     }
                 });
@@ -197,6 +134,44 @@
                     }
                 });
 
+            },
+            _makeNotValid = function ( field ) {
+                field.addClass( 'not-valid' );
+                field.removeClass( 'valid' );
+            },
+            _makeValid = function ( field ) {
+                field.removeClass( 'not-valid' );
+                field.addClass( 'valid' );
+            },
+            _validateEmail = function ( email ) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            },
+            _validateField = function ( field ) {
+                var type = field.attr( 'type' );
+
+                if ( type == 'email' ) {
+                    if( !_validateEmail( field.val() ) ){
+                        _makeNotValid( field );
+                        return false;
+                    }
+                } else {
+                    if ( field.val() == '' ) {
+                        _makeNotValid( field );
+                        return false;
+                    }
+                }
+                _makeValid( field );
+                return true;
+            },
+            _setStartSelectValue = function() {
+                _selectRequiredWraps.each(function () {
+                    var curElem = $(this),
+                        curValue = curElem.find('select').val(),
+                        curInput = curElem.find('input');
+
+                    curInput.val(curValue);
+                });
             },
             _checkPopupWidth = function() {
                 var curWidth = $(window).width() - 20;
@@ -215,11 +190,8 @@
                     var curElem = $(this),
                         curValue = curElem.val();
 
-                    if ( curValue == '' ) {
-                        curElem.addClass('not-valid');
+                    if ( !_validateField(curElem) ) {
                         notValid = true;
-                    } else {
-                        curElem.removeClass('not-valid');
                     }
                 });
 
@@ -231,19 +203,20 @@
             },
             _sendRequest = function () {
 
-            console.log(_obj.serialize());
                 _request.abort();
                 _request = $.ajax({
                     url: _obj.data('action'),
                     data: {
                         address: _obj.serialize()
                     },
-                    dataType: 'json',
+                    dataType: 'html',
                     timeout: 20000,
                     type: 'get',
-                    success: function (data) {
+                    success: function () {
 
+                        _obj.find('.swiper-slide-active').addClass('success');
                         console.log('success');
+                        _swiper.slideNext();
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {
@@ -252,32 +225,7 @@
                     }
                 });
 
-                currentItem.addClass('loading');
-
-                // $.ajax({
-                //     url: $('body').data('action'),
-                //     dataType: 'html',
-                //     timeout: 20000,
-                //     type: 'get',
-                //     data: {
-                //         action: 'test',
-                //         page: currentItem.data('page')
-                //     },
-                //     success: function (data) {
-                //
-                //         currentItem.removeClass('loading');
-                //
-                //         currentItem.html(data);
-                //
-                //         updateInit();
-                //
-                //     },
-                //     error: function (XMLHttpRequest) {
-                //         if (XMLHttpRequest.statusText != "abort") {
-                //             console.log(XMLHttpRequest);
-                //         }
-                //     }
-                // });
+                // currentItem.addClass('loading');
             },
             _initSlider = function() {
                 _swiper = new Swiper(_slider, {
@@ -288,16 +236,18 @@
                     spaceBetween: 30,
                     effect: 'fade',
                     touchRatio: 0,
-                    paginationClickable: true
-                });
-
-                var stepWidth = 100/_items.length + '%';
-                _items.each(function () {
-                    _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                    paginationClickable: true,
+                    onInit: function () {
+                        var stepWidth = 100/_items.length + '%';
+                        _items.each(function () {
+                            _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                        });
+                    }
                 });
             },
             _init = function() {
                 _addEvents();
+                _setStartSelectValue();
 
                 if ( _obj.parent('.popup__content') ) {
                     _checkPopupWidth();
@@ -319,7 +269,8 @@
         //private properties
         var _obj = obj,
             _btn = $( '.menu-btn' ),
-            _scrollConteiner = $( 'html' );
+            _scrollConteiner = $( 'html' ),
+            _loader = $('.loader');
 
         //private methods
         var _addEvents = function() {
@@ -334,6 +285,13 @@
                             _btn.removeClass('active');
                             _hideMenu();
                         }
+                    }
+                });
+
+                $(window).on({
+                    'load': function() {
+
+                        _loader.addClass('hide');
                     }
                 });
 
@@ -365,55 +323,6 @@
                     overflowY: 'auto',
                     paddingRight: 0
                 } );
-            },
-            _init = function() {
-                _addEvents();
-            };
-
-        //public properties
-
-        //public methods
-
-        _init();
-    };
-
-    var Step = function(obj) {
-
-        //private properties
-        var _obj = obj,
-            _items = _obj.find('.step__item'),
-            _nextBtn = _obj.find('.step__next'),
-            _prevBtn = _obj.find('.step__prev');
-
-        //private methods
-        var _addEvents = function() {
-
-                _nextBtn.on({
-                    'click': function() {
-
-                        _next();
-                    }
-                });
-
-                _prevBtn.on({
-                    'click': function() {
-
-                        _prev();
-                    }
-                });
-                
-                _items.on({
-                    'submit': function () {
-                        
-                    }
-                })
-
-            },
-            _next = function (){
-
-            },
-            _prev = function() {
-
             },
             _init = function() {
                 _addEvents();
@@ -677,6 +586,86 @@
                 _items.eq(_activeIndex).removeClass('is-hidden');
                 _items.eq(_activeIndex).addClass('is-visible');
                 _drawTriangle(_items.eq(_activeIndex).data('fill'));
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var Rate = function(obj) {
+
+        //private properties
+        var _obj = obj,
+            _wrap = _obj.find('.rate__wrap'),
+            _objWidth = _obj.width(),
+            _objLeft = _obj.offset().left,
+            _savePosition = 0,
+            _curPosition = 0;
+
+        //private methods
+        var _addEvents = function() {
+
+                _obj.on({
+                    'mousemove': function (e) {
+                        _curPosition = e.offsetX/$(this).outerWidth()*100;
+                        _wrap.css({ 'width': _curPosition + '%' });
+                    },
+                    'mouseleave': function () {
+                        _wrap.css({ 'width': _savePosition + '%' });
+                    },
+                    'click': function () {
+                        _savePosition = _curPosition;
+                    }
+                });
+
+            },
+            _init = function() {
+                _addEvents();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
+
+    var Comments = function(obj) {
+
+        //private properties
+        var _obj = obj,
+            _commentsList = _obj.find('.comments__list'),
+            _hideItems = _commentsList.find('.hide'),
+            _showMore = _obj.find('.comments__more');
+
+        //private methods
+        var _addEvents = function() {
+
+                _showMore.on({
+                    'click': function () {
+
+                        _hideItems.each(function (i) {
+                            var curElem = $(this);
+
+                            setTimeout(function () {
+                                curElem.slideDown(200);
+                            }, i*200);
+
+                            setTimeout(function () {
+                                _showMore.css({ 'display': 'none' });
+                            }, _hideItems.length*200)
+                        });
+
+                        return false;
+                    }
+                });
+
+            },
+            _init = function() {
+                _addEvents();
             };
 
         //public properties

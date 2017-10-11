@@ -2,11 +2,21 @@
 
     $( function(){
         $( 'select' ).each( function(){
-            new WebstersSelect( {
-                obj: $( this ),
-                optionType: 1,
-                showType: 2
-            } );
+
+            if ( $(this).parents('.popup').length ) {
+                new WebstersSelect( {
+                    obj: $( this ),
+                    optionType: 1,
+                    showType: 2,
+                    visible: 3
+                } );
+            } else {
+                new WebstersSelect( {
+                    obj: $( this ),
+                    optionType: 1,
+                    showType: 2
+                } );
+            }
         } );
     } );
 
@@ -24,6 +34,8 @@
             _body = $( 'body' ),
             _opened = false,
             _popup, _scroll;
+        
+        console.log(_visible);
         
         //private methods
         var _addWrap = function(){

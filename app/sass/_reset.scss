@@ -12,3 +12,16 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
+input[type=search]{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input,
+textarea,
+label {
+  -webkit-overflow-scrolling: touch;
+}
+html,body{
+  -webkit-overflow-scrolling : touch;
+}

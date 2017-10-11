@@ -171,11 +171,22 @@
   font-size: 15px;
   color: #4e4e4e;
   background-color: #fff;
-  @include main-font();
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.16);
 
   &_hidden{
     opacity: 0;
     height: 0;
+  }
+
+  ul {
+    color: #4e4e4e;
+    text-align: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(209, 209, 209);
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    @include main-font();
   }
 
   li {
@@ -184,6 +195,8 @@
     padding: 10px 20px;
     transition: background 300ms ease-in-out, color 300ms, ease-in-out;
     cursor: pointer;
+
+    text-align: left;
 
     &:first-child {
       border-top: none;
@@ -208,20 +221,10 @@
     
     &.hover {
       color: #000;
-
-      &:before {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
     }
 
     &.active {
       color: #4e4e4e;
-
-      &:before {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
     }
 
     &.filtered {

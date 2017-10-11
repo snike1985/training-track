@@ -9,11 +9,106 @@
 
     <title>Title</title>
 
+    <style>
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: #f5f5f5;
+        }
+        .loader.hide {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-animation: hideLoader 1s 1 ease-in-out both;
+            animation: hideLoader 1s 1 ease-in-out both;
+        }
+        .loader__wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            transform: translate(-50%,-50%);
+        }
+        .loader__wrap div {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 100%;
+            background-color: #94ddbd;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out both;
+            animation: bouncedelay 1.4s infinite ease-in-out both;
+        }
+        .loader__wrap div.loader__one {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+            background-color: #ff8080;
+        }
+        .loader__wrap div.loader__two {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+            background-color: #8cc5ff;
+        }
+
+        @-webkit-keyframes bouncedelay {
+            0%, 80%, 100% { -webkit-transform: scale(0) }
+            40% { -webkit-transform: scale(1) }
+        }
+
+        @keyframes bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+            40% {
+                transform: scale(1);
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @-webkit-keyframes hideLoader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+            }
+            100% {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        @keyframes hideLoader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+            }
+            100% {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+    </style>
+
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/single-profile_page.css">
 
 </head>
 <body>
+
+<!-- loader -->
+<div class="loader">
+    <!-- loader__wrap -->
+    <div class="loader__wrap">
+        <div class="loader__one"></div>
+        <div class="loader__two"></div>
+        <div class="loader__three"></div>
+    </div>
+    <!-- /loader__wrap -->
+</div>
+<!-- /loader -->
 
     <!-- site -->
     <div class="site">
@@ -180,7 +275,7 @@
                             <span class="tag">4/5</span>
                         </div>
                         <div>
-                            <a href="#" class="link link_plus">
+                            <a href="#" class="link link_plus popup__open" data-popup="add-review">
                                 Ajouter une note
                                 <span class="link__icon">
                                 <svg viewBox="0 0 61.2 61.2" style="enable-background:new 0 0 61.2 61.2;" xml:space="preserve">
@@ -263,12 +358,144 @@
                         </div>
                         <!-- /comments__item -->
 
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Paul</dt>
+                                    <dd>
+                                        <data value="10-09-2017">Le 10 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 80%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Michael</dt>
+                                    <dd>
+                                        <data value="03-09-2017">Le 3 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 80%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Alice</dt>
+                                    <dd>
+                                        <data value="02-09-2017">Le 2 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 100%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Paul</dt>
+                                    <dd>
+                                        <data value="10-09-2017">Le 10 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 80%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Michael</dt>
+                                    <dd>
+                                        <data value="03-09-2017">Le 3 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 80%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
+                        <!-- comments__item -->
+                        <div class="comments__item hide">
+                            <!-- comments__item-head -->
+                            <div class="comments__item-head">
+                                <dl>
+                                    <dt>Alice</dt>
+                                    <dd>
+                                        <data value="02-09-2017">Le 2 aout 2017</data>
+                                    </dd>
+                                </dl>
+
+                                <!-- rate -->
+                                <div class="rate">
+                                    <span class="rate__wrap" style="width: 100%"></span>
+                                </div>
+                                <!-- /rate -->
+                            </div>
+                            <!-- /comments__item-head -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <!-- /comments__item -->
+
                     </div>
                     <!-- /comments__list -->
 
                     <!-- comments__footer -->
                     <footer class="comments__footer">
-                        <a href="#" class="link popup__open" data-popup="add-review">Voir les 23 commentaires</a>
+                        <a href="#" class="link comments__more">Voir les 23 commentaires</a>
                     </footer>
                     <!-- /comments__footer -->
 
@@ -442,15 +669,15 @@
 
                     <label for="review" class="add-review__inline">Votre note
                         <!-- rate -->
-                        <div class="rate rate_higher">
-                            <span class="rate__wrap" style="width: 80%"></span>
+                        <div class="rate rate_higher rate_check">
+                            <span class="rate__wrap" style="width: 0%"></span>
                         </div>
                         <!-- /rate -->
                     </label>
                     <textarea id="review" placeholder="Votre commentaire"></textarea>
 
-                    <!-- add-review__btn -->
-                    <div class="add-review__btn">
+                    <!-- site__form-btns -->
+                    <div class="site__form-btns">
                         <button type="submit" class="btn btn_color btn_icon">
                             <span>
                                 Envoyer
@@ -463,7 +690,7 @@
                             </span>
                         </button>
                     </div>
-                    <!-- /add-review__btn -->
+                    <!-- /site__form-btns -->
                 </form>
                 <!-- /add-review -->
             </div>
@@ -482,7 +709,7 @@
                 <h2>Réserver un coach</h2>
 
                 <!-- book -->
-                <form action="php/send.php" class="book site__form">
+                <form action="php/form.php" class="book site__form step">
 
                     <!-- book__steps -->
                     <div class="book__steps">
@@ -496,7 +723,7 @@
                                     <div class="site__form-row">
 
                                         <div class="site__form-field site__form-field_date">
-                                            <input type="date" name="date" placeholder="Date et heure" required>
+                                            <input type="text" name="date" placeholder="Date et heure" required>
                                             <i>
                                                 <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                         <path d="M22.3,88.7h55.3c3.9,0,7-3.1,7-7V25.8c0-3.9-3.1-7-7-7H68v-4.5c0-1.7-1.3-3-3-3s-3,1.3-3,3v4.5H37.9v-4.5c0-1.7-1.3-3-3-3
@@ -533,7 +760,7 @@
 
                                     <!-- site__form-btns -->
                                     <div class="site__form-btns">
-                                        <a href="#" class="btn btn_color btn_icon book__next">
+                                        <a href="#" class="btn btn_color btn_icon step__next">
                                             <span>
                                                 Suivant
                                                 <i>
@@ -549,59 +776,61 @@
                                 </div>
                                 <div class="swiper-slide">
 
-                                    <!-- site__form-row -->
-                                    <div class="site__form-row">
+                                   <!-- step__submited -->
+                                   <div class="step__submited">
+                                       <!-- site__form-row -->
+                                       <div class="site__form-row">
 
-                                        <!-- site__form-double -->
-                                        <div class="site__form-double">
-                                            <div class="site__form-field">
-                                                <input type="text" name="surname" placeholder="Prénom" required>
-                                                <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
-                                                </i>
-                                            </div>
-                                            <div class="site__form-field">
-                                                <input type="text" name="name" placeholder="Nom" required>
-                                                <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                                        <g>
-                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
-                                                />
-                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
-                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
-                                        </g>
-                                    </svg>
-                                                </i>
-                                            </div>
-                                        </div>
-                                        <!-- /site__form-double -->
+                                           <!-- site__form-double -->
+                                           <div class="site__form-double">
+                                               <div class="site__form-field">
+                                                   <input type="text" name="surname" placeholder="Prénom" required>
+                                                   <i>
+                                                       <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                                />
+                                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                                        </g>
+                                                    </svg>
+                                                   </i>
+                                               </div>
+                                               <div class="site__form-field">
+                                                   <input type="text" name="name" placeholder="Nom" required>
+                                                   <i>
+                                                       <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                        <g>
+                                                            <path d="M50,50C25,50,5,70,5,95c0,3,2,5,5,5h80c3,0,5-2,5-5C95,70,75,50,50,50z M15.5,90C18,73,32.5,60,50,60s32,13,34.5,30H15.5z"
+                                                                />
+                                                            <path d="M50,45c12.5,0,22.5-10,22.5-22.5S62.5,0,50,0S27.5,10,27.5,22.5S37.5,45,50,45z M50,10c7,0,12.5,5.5,12.5,12.5S57,35,50,35
+                                                                s-12.5-5.5-12.5-12.5S43,10,50,10z"/>
+                                                        </g>
+                                                    </svg>
+                                                   </i>
+                                               </div>
+                                           </div>
+                                           <!-- /site__form-double -->
 
-                                        <!-- site__form-double -->
-                                        <div class="site__form-double">
-                                            <!-- site__form-field -->
-                                            <div class="site__form-field">
-                                                <input type="email" name="email" placeholder="Email" required>
-                                                <i>
-                                                    <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                           <!-- site__form-double -->
+                                           <div class="site__form-double">
+                                               <!-- site__form-field -->
+                                               <div class="site__form-field">
+                                                   <input type="email" name="email" placeholder="Email" required>
+                                                   <i>
+                                                       <svg class="email" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                         <path d="M74.8,24H25.2c-6.1,0-11,4.9-11,11v30c0,6.1,4.9,11,11,11h49.6c6.1,0,11-4.9,11-11V35C85.8,28.9,80.9,24,74.8,24z
                                                              M63.9,45.9l15.9-10.7V65L63.9,45.9z M74.8,30c0.5,0,1.1,0.1,1.6,0.3L50,48L23.6,30.3c0.5-0.2,1-0.3,1.6-0.3L74.8,30z M20.2,65V35.2
                                                             l15.9,10.7L20.2,65z M25.2,70c-0.4,0-0.8-0.1-1.2-0.2l17.1-20.5l7.2,4.8h0c1,0.7,2.3,0.7,3.3,0l7.2-4.8L76,69.8
                                                             c-0.4,0.1-0.8,0.2-1.2,0.2L25.2,70z"/>
                                                     </svg>
-                                                </i>
-                                            </div>
-                                            <!-- /site__form-field -->
-                                            <div class="site__form-field">
-                                                <input type="tel" name="telephone" placeholder="Téléphone" required>
-                                                <i>
-                                                    <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                                   </i>
+                                               </div>
+                                               <!-- /site__form-field -->
+                                               <div class="site__form-field">
+                                                   <input type="tel" name="telephone" placeholder="Téléphone" required>
+                                                   <i>
+                                                       <svg viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                         <path d="M25.5,17.5h0.3c2,0.1,3.8,1,5.5,2c3.5,2.1,6.6,4.9,9,8.1c1.5,1.9,2.7,4.5,1.8,6.7c-1,2.6-4.5,3.7-5,6.5
                                                             c-0.3,1.5,0.5,2.9,1.3,4.1c4.4,7.2,10.7,13.3,18,17.5c0.7,0.4,1.5,0.8,2.3,0.8h0.2c0.1,0,0.1-0.1,0.2-0.1c0.9-0.2,1.6-0.8,2.2-1.5
                                                             c1.4-1.4,3.1-2.6,4.9-3.7c0.6-0.3,1.2-0.7,1.9-0.7h0.2c0.7,0.1,1.2,0.4,1.8,0.8c3.1,2,5.9,4.3,8.5,6.9c1.8,1.8,3.5,3.8,4,6.4
@@ -612,45 +841,45 @@
                                                             H68c-2.6,0-4.4,1-5.4,1.6c-1.7,1-3.3,2-4.7,3.3c-5.1-3.4-9.5-7.7-12.8-12.8c1.2-1.1,2.8-2.7,3.7-5.1c1-2.5,1.9-7.6-2.7-13.8
                                                             c-3-4-6.8-7.5-11.1-10c-1.9-1.2-5-2.8-8.7-3h-0.2C26,10.3,25.8,10.3,25.5,10.3L25.5,10.3z"/>
                                                     </svg>
-                                                </i>
-                                            </div>
-                                        </div>
-                                        <!-- /site__form-double -->
+                                                   </i>
+                                               </div>
+                                           </div>
+                                           <!-- /site__form-double -->
 
-                                        <!-- site__form-location -->
-                                        <div class="site__form-location">
-                                            <!-- site__form-field -->
-                                            <div class="site__form-field">
-                                                <input type="text" name="location" placeholder="Rue et numéro" required>
-                                                <i>
-                                                    <svg class="location" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                           <!-- site__form-location -->
+                                           <div class="site__form-location">
+                                               <!-- site__form-field -->
+                                               <div class="site__form-field">
+                                                   <input type="text" name="location" placeholder="Rue et numéro" required>
+                                                   <i>
+                                                       <svg class="location" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                                         <path d="M49.5,22.5c-9.9,0-18,8.1-18,18s8.1,18,18,18s18-8.1,18-18S59.4,22.5,49.5,22.5z M49.5,50.5c-5.5,0-10-4.5-10-10
                                                             s4.5-10,10-10s10,4.5,10,10S55,50.5,49.5,50.5z M49.5,2.5c-21,0-38,16.9-38,37.6c0,31.3,34.2,56.5,35.6,57.6
                                                             c0.7,0.5,1.5,0.8,2.4,0.8s1.6-0.3,2.4-0.8c1.5-1.1,35.6-26.3,35.6-57.6C87.5,19.4,70.5,2.5,49.5,2.5L49.5,2.5z M49.5,89.4
                                                             c-7.4-6.1-30-26.4-30-49.3c0-16.3,13.5-29.6,30-29.6s30,13.3,30,29.6C79.5,63,56.9,83.3,49.5,89.4z"/>
                                                     </svg>
-                                                </i>
-                                            </div>
-                                            <!-- /site__form-field -->
-                                            <input type="text" name="codePostal" placeholder="Code Postal" required>
-                                        </div>
-                                        <!-- /site__form-location -->
+                                                   </i>
+                                               </div>
+                                               <!-- /site__form-field -->
+                                               <input type="text" name="codePostal" placeholder="Code Postal" required>
+                                           </div>
+                                           <!-- /site__form-location -->
 
-                                    </div>
-                                    <!-- /site__form-row -->
+                                       </div>
+                                       <!-- /site__form-row -->
 
-                                    <!-- site__form-btns -->
-                                    <div class="site__form-btns site__form-btns_double">
-                                        <a href="#" class="btn btn_2 btn_icon-revert book__prev">
-                                            <i>
-                                                <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
+                                       <!-- site__form-btns -->
+                                       <div class="site__form-btns site__form-btns_double">
+                                           <a href="#" class="btn btn_2 btn_icon-revert step__prev">
+                                               <i>
+                                                   <svg viewBox="0 0 56 95" style="enable-background:new 0 0 56 95;" xml:space="preserve">
                                                     <path d="M56,47.5c0,2.2-0.8,4.3-2.5,6l-39,39c-3.3,3.3-8.7,3.3-12,0c-3.3-3.3-3.3-8.7,0-12l33-33l-33-33c-3.3-3.3-3.3-8.7,0-12
                                                         s8.7-3.3,12,0l39,39C55.2,43.2,56,45.3,56,47.5z"/>
                                                 </svg>
-                                            </i>
-                                            Précédent
-                                        </a>
-                                        <button type="submit" class="btn btn_color btn_icon book__next submit">
+                                               </i>
+                                               Précédent
+                                           </a>
+                                           <button type="submit" class="btn btn_color btn_icon step__submit">
                                             <span>
                                                 Terminer
                                                 <i>
@@ -660,24 +889,30 @@
                                                     </svg>
                                                 </i>
                                             </span>
-                                        </button>
-                                    </div>
-                                    <!-- /site__form-btns -->
-                                </div>
-                                <div class="swiper-slide">
+                                           </button>
+                                       </div>
+                                       <!-- /site__form-btns -->
+                                   </div>
+                                   <!-- /step__submited -->
 
-                                    <!-- thankYou -->
-                                    <div class="thankYou">
-                                        <h4 class="thankYou__title">Merci !</h4>
-                                        <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
-                                            contactons rapidement.</p>
-                                    </div>
-                                    <!-- /thankYou -->
+                                    <!-- step__thankyou -->
+                                    <div class="step__thankyou">
+                                        <!-- site__form-row -->
+                                        <div class="site__form-row">
+                                            <!-- thankYou -->
+                                            <div class="thankYou">
+                                                <h4 class="thankYou__title">Merci !</h4>
+                                                <p>Votre demande nous a bien été envoyée. Nous examinons celle-ci et vous
+                                                    contactons rapidement.</p>
+                                            </div>
+                                            <!-- /thankYou -->
+                                        </div>
+                                        <!-- /site__form-row -->
 
-                                    <!-- site__form-btns -->
-                                    <div class="site__form-btns">
+                                        <!-- site__form-btns -->
+                                        <div class="site__form-btns">
 
-                                        <a href="#" class="btn btn_color btn_icon book__next">
+                                            <a href="#" class="btn btn_color btn_icon">
                                             <span>
                                                 Continuer la navigation
                                                 <i>
@@ -687,9 +922,12 @@
                                                     </svg>
                                                 </i>
                                             </span>
-                                        </a>
+                                            </a>
+                                        </div>
+                                        <!-- /site__form-btns -->
                                     </div>
-                                    <!-- /site__form-btns -->
+                                    <!-- /step__thankyou -->
+
                                 </div>
                             </div>
                         </div>
