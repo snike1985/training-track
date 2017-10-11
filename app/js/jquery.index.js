@@ -295,6 +295,16 @@
                     }
                 });
 
+
+                $('body').on({
+                    'mousewheel': function(e) {
+                        if (_obj.hasClass('open')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    }
+                })
+
             },
             _getScrollWidth = function (){
                 var scrollDiv = document.createElement( 'div'),

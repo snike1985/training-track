@@ -47,6 +47,7 @@
       left: 1px;
       width: 12px;
       height: 12px;
+      z-index: 2;
       border: 2px solid #fff;
       box-sizing: border-box;
       clip: rect(3px, 15px, 15px, 8px);
@@ -60,6 +61,7 @@
       left: 1px;
       width: 15px;
       height: 15px;
+      z-index: 1;
       border-width: 1px;
       border-color: rgb(209, 209, 209);
       border-style: solid;

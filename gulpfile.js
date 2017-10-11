@@ -30,14 +30,10 @@ var paths = {
             dist: 'list.min.js',
             contains: [
                 'app/js/jquery.index.js',
+                'app/js/jquery.form.validator.js',
+                'app/js/jquery.popup.js',
                 'app/js/jquery.filter-autocomplete.js',
                 'app/js/jquery.websters-select.js'
-            ]
-        },
-        {
-            dist: 'tabs.min.js',
-            contains: [
-                'app/js/jquery.tabs.js'
             ]
         }
     ],
