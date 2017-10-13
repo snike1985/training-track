@@ -5,8 +5,13 @@
         $('.rate_check').each( function() {
             new Rate( $(this) );
         } );
+
         $('.step').each( function() {
             new Step( $(this) );
+        } );
+
+        $('.site').each( function() {
+            new Site( $(this) );
         } );
 
         $('.menu').each( function() {
@@ -34,6 +39,91 @@
         } );
 
     });
+
+    var Site = function(obj) {
+
+        //private properties
+        var _self = this,
+            _obj = obj,
+            _window = $( window ),
+            _canMove = true;
+
+        //private methods
+        var _addEvents = function() {
+
+                _window.on( {
+                    'scroll': function() {
+                        var scrollTop = $(window).scrollTop();
+                        _move( scrollTop );
+                    },
+                    'load': function() {
+                        var scrollTop = $(window).scrollTop();
+                        _changeCanMove();
+                        _move( scrollTop );
+                    },
+                    'resize': function() {
+                        _changeCanMove();
+                    }
+                } );
+
+            },
+            _changeCanMove = function() {
+                var siteWidth = $('.site').outerWidth();
+
+                if ( siteWidth < 1200 ) {
+                    _canMove = false;
+                } else {
+                    _canMove = true;
+                }
+            },
+            _paralax = function( elem, x, y, koef ) {
+                var translate = 'translate3d(' + Math.round(x*koef) + 'px, ' + Math.round(y*koef) + 'px, 0px )';
+
+                if (!_canMove) {
+                    translate = 'translate3d(0px, 0px)';
+                }
+
+                elem.css( {
+                    'transform': translate
+                } );
+            },
+            _move = function( scrollTop ){
+                var winHeight = $(window).height();
+
+                $('.easier').each( function() {
+                    var curElem = $(this),
+                        items = curElem.find('.easier__photos-line'),
+                        curTop = curElem.offset().top,
+                        curHeight = curElem.height(),
+                        curKoef = -.05;
+
+                    items.each( function() {
+                        var curItem = $(this);
+
+                        curKoef = -curKoef;
+                        if ( ( scrollTop <= ( curTop + curHeight ) && ( ( winHeight + scrollTop ) >= curTop ) ) ) {
+
+                            if ( curTop < winHeight ) {
+                                _paralax( curItem, 0, scrollTop, curKoef);
+                            } else {
+                                _paralax( curItem, 0, scrollTop - (curTop - winHeight), curKoef);
+                            }
+                        }
+                    } );
+                } );
+
+            },
+            _init = function() {
+                _obj[ 0 ].obj = _self;
+                _addEvents();
+            };
+
+        //public properties
+
+        //public methods
+
+        _init();
+    };
 
     var Step = function(obj) {
 
@@ -97,6 +187,14 @@
                         _items.each(function () {
                             _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
                         });
+                    },
+                    'load': function () {
+                        if ( _obj.parent('.popup__content') ) {
+                            _checkPopupWidth();
+                            _initSlider();
+                        } else {
+                            _initSlider();
+                        }
                     }
                 });
 
@@ -238,23 +336,18 @@
                     touchRatio: 0,
                     paginationClickable: true,
                     onInit: function () {
-                        var stepWidth = 100/_items.length + '%';
-                        _items.each(function () {
-                            _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
-                        });
+                        setTimeout(function () {
+                            var stepWidth = 100/_items.length + '%';
+                            _items.each(function (i) {
+                                _steps.append('<div class="steps" style="width: ' + stepWidth + '"></div>');
+                            });
+                        }, 100)
                     }
                 });
             },
             _init = function() {
                 _addEvents();
                 _setStartSelectValue();
-
-                if ( _obj.parent('.popup__content') ) {
-                    _checkPopupWidth();
-                    _initSlider();
-                } else {
-                    _initSlider();
-                }
             };
 
         //public properties
@@ -411,11 +504,24 @@
         //private properties
         var _self = this,
             _obj = obj,
-            _fill = _obj.data('fill');
+            _fill = _obj.data('fill'),
+            _lineWidth = 5;
 
         //private methods
         var _addEvents = function() {
 
+            $(window).on({
+                'resize': function () {
+
+                    if ( $(window).width() < 1200 ) {
+                        _lineWidth = 5;
+                    } else {
+                        _lineWidth = 2
+                    }
+
+                    _draw(_fill);
+                }
+            });
 
             },
             _draw = function(fill) {
@@ -428,7 +534,7 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 ctx.beginPath();
-                ctx.lineWidth = 2;
+                ctx.lineWidth = _lineWidth;
                 ctx.strokeStyle = fill;
                 ctx.moveTo(253, 182);
                 ctx.lineTo(372, 0);
@@ -443,7 +549,7 @@
 
 
                 ctx.beginPath();
-                ctx.lineWidth = 4;
+                ctx.lineWidth = _lineWidth*1.8;
                 ctx.strokeStyle = fill;
                 ctx.moveTo(0, 567);
                 ctx.lineTo(744, 567);
@@ -453,6 +559,11 @@
             _init = function() {
                 _obj[ 0 ].obj = _self;
                 _addEvents();
+                if ( $(window).width() < 992 ) {
+                    _lineWidth = 5;
+                } else {
+                    _lineWidth = 2
+                }
                 _draw(_fill);
             };
 
@@ -649,33 +760,52 @@
         var _obj = obj,
             _commentsList = _obj.find('.comments__list'),
             _hideItems = _commentsList.find('.hide'),
-            _showMore = _obj.find('.comments__more');
+            _btn = _obj.find('.comments__more'),
+            _hideComments = _obj.find('.comments__count');
 
         //private methods
         var _addEvents = function() {
 
-                _showMore.on({
+                _btn.on({
                     'click': function () {
+                        var curElem = $(this);
 
-                        _hideItems.each(function (i) {
-                            var curElem = $(this);
-
-                            setTimeout(function () {
-                                curElem.slideDown(200);
-                            }, i*200);
-
-                            setTimeout(function () {
-                                _showMore.css({ 'display': 'none' });
-                            }, _hideItems.length*200)
-                        });
+                        if ( curElem.hasClass('active') ) {
+                            _hideMore();
+                        } else {
+                            _showMore();
+                        }
 
                         return false;
                     }
                 });
 
             },
+            _showMore = function () {
+                _hideItems.each(function (i) {
+                    var curElem = $(this);
+
+                    curElem.slideDown(300);
+
+                    setTimeout(function () {
+                        _btn.addClass('active');
+                    }, 300)
+                });
+            },
+            _hideMore = function () {
+                _hideItems.each(function (i) {
+                    var curElem = $(this);
+
+                    curElem.slideUp(300);
+
+                    setTimeout(function () {
+                        _btn.removeClass('active');
+                    }, 300)
+                });
+            },
             _init = function() {
                 _addEvents();
+                _hideComments.text(_hideItems.length);
             };
 
         //public properties

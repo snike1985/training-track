@@ -29,7 +29,7 @@
     padding: 3px;
     border: none;
     will-change: transform;
-    background-color: transparent;
+    background: #cacaca;
 
     &:before {
       width: 150%;
@@ -43,7 +43,7 @@
       background: -moz-linear-gradient(left, rgba(129,190,254,1) 25%, rgba(255,128,128,1) 75%);
       background: -webkit-linear-gradient(left, rgba(129,190,254,1) 25%,rgba(255,128,128,1) 75%);
       background: linear-gradient(to right, rgba(129,190,254,1) 25%,rgba(255,128,128,1) 75%);
-      transition: transform .3s ease-in-out;
+      transition: opacity .3s ease-in-out;
       content: '';
     }
 
@@ -57,24 +57,24 @@
       z-index: 2;
       border-radius: 25px;
       background-color: #fff;
-      transition: background .3s ease-in-out;
+      transition: opacity .3s ease-in-out;
     }
 
 
     &:hover {
 
       &:before {
-        transform: translate(-50%,-50%) rotate(240deg);
+        //transform: translate(-50%,-50%) rotate(240deg);
+        opacity: 0;
       }
       span {
-        background-color: transparent;
+        //background-color: transparent;
       }
     }
   }
 
   &.btn_icon {
     display: inline-block;
-    background-color: transparent;
 
     span {
       display: flex;

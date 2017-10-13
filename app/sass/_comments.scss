@@ -67,6 +67,24 @@
     }
   }
 
+  &__more {
+
+    div {
+      display: none;
+
+      &:first-child { display: block }
+    }
+
+    &.active {
+
+      div {
+        display: block;
+
+        &:first-child { display: none }
+      }
+    }
+  }
+
   &__footer {
     padding: 15px 0;
     text-align: center;
